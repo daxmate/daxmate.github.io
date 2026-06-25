@@ -6,10 +6,3 @@
 
 基于 [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) Jekyll 主题。
 
-## 本地预览
-
-```bash
-bundle install
-RUBYOPT="-Eutf-8" bundle exec jekyll serve --config _config.yml,_config.dev.yml
-# 打开 http://localhost:4000
-```
