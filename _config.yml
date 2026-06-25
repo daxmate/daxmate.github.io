@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Theme Settings
-theme                    : "minimal-mistakes-jekyll"
+remote_theme             : "mmistakes/minimal-mistakes@4.28.0"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "catppuccin_latte", "catppuccin_mocha"
 
 # Site Settings
