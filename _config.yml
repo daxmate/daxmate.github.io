@@ -94,8 +94,8 @@ author:
   name             : "大象同学"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Python 开发者，写点代码和博客"
-  location         : "Shanghai, China"
-  email            : # your email
+  location         : "Nantong, China"
+  email            : "dax26#gmail.com"
   # fediverse      : "@you@instance.social"
   links:
     - label: "Email"
