@@ -21,7 +21,7 @@ url                      : "https://daxmate.github.io" # ← 改成你的 GitHub
 baseurl                  : # 如果用了 project pages 才需要，user pages 留空
 repository               : "daxmate/daxmate.github.io" # ← GitHub 仓库
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : "/assets/images/logo.jpeg"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
