@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title: "VIM设置CPP开发环境"
 date: 2022-03-21

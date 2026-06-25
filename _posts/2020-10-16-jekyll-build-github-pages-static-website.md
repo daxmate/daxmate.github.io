@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title: "Minimal-Mistakes-Jekyll搭建GitHub静态博客"
 date: 2020-10-16

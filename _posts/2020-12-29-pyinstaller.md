@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "在macOS上用PyInstaller打包Python程序"
 date: 2020-12-29
 author: 'dax'

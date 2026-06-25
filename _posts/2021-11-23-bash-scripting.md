@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title:  "Bash Scripting 入门"
 date:   2021-11-23

@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title:  "腾讯云自建云梯"
 date:   2021-11-21

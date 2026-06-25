@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title:  "BeautifulSoup 学习笔记"
 date:   2021-11-22

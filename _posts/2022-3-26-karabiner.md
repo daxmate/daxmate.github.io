@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: single
 title:  "设置karabiner"
 date:   2022-3-26
