@@ -2,7 +2,8 @@
 layout: single
 title:  "从零开始学命令行(1)--开工"
 date:   2026-06-25 16:00:00 +0800
-categories: "shell"
+categories:
+  - 命令行
 tags:
   - 命令行
   - bash
