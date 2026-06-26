@@ -70,9 +70,12 @@ Shell 是真正干活的那个。打开终端，连上的那个就是 Shell。
 
 最常见的几种：
 
-| Shell | 全名 | 特点 | |-------|------|------| | sh | Bourne Shell | 老祖宗，几乎所有 Unix 系统自带的底线 | | bash |
-Bourne Again Shell | sh 的加强版，很长一段时间是 Linux 默认 Shell | | zsh | Z Shell | bash 的超集，功能更强，macOS 现在
-的默认 Shell | | fish | Friendly Interactive Shell | 开箱即用，不需要配置就很好用 |
+| Shell | 全名 | 特点 |
+|-------|------|------|
+| sh | Bourne Shell | 老祖宗，几乎所有 Unix 系统自带的底线 |
+| bash | Bourne Again Shell | sh 的加强版，很长一段时间是 Linux 默认 Shell |
+| zsh | Z Shell | bash 的超集，功能更强，macOS 现在 的默认 Shell |
+| fish | Friendly Interactive Shell | 开箱即用，不需要配置就很好用 |
 
 我们不用把每种都学一遍。如果用 Mac，系统默认就是 **zsh**，已经很够用了。这个系列后面的文章也都是基于 zsh 来写的。
 
