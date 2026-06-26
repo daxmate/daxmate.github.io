@@ -1,12 +1,12 @@
 ---
-title: "命令行"
+title: "Command Line"
 layout: archive
-permalink: /categories/命令行/
+permalink: "/categories/Command Line/"
 author_profile: false
 entries_layout: list
 ---
 
-{% assign cat_posts = site.categories["命令行"] %}
+{% assign cat_posts = site.categories["Command Line"] %}
 {% if cat_posts.size > 0 %}
   {% for post in cat_posts %}
     {% include archive-single.html %}
