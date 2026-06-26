@@ -10,7 +10,7 @@ main:
 # sidebar categories
 sidebar-categories:
   - title: "Command Line"
-    url: /categories/CML/
+    url: /categories/Command Line/
   - title: "ZSH"
     url: /categories/ZSH/
   - title: "Vim"
