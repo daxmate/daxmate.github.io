@@ -9,8 +9,8 @@ main:
 
 # sidebar categories
 sidebar-categories:
-  - title: "命令行"
-    url: /categories/命令行/
+  - title: "Command Line"
+    url: /categories/CML/
   - title: "ZSH"
     url: /categories/ZSH/
   - title: "Vim"
@@ -27,5 +27,5 @@ sidebar-categories:
     url: /categories/Qt/
   - title: "Lua"
     url: /categories/Lua/
-  - title: "其他"
-    url: /categories/其他/
+  - title: "Other"
+    url: /categories/Other/
