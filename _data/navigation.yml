@@ -6,3 +6,26 @@ main:
     url: /about/
   - title: "归档"
     url: /archive/
+
+# sidebar categories
+sidebar-categories:
+  - title: "命令行"
+    url: /categories/命令行/
+  - title: "ZSH"
+    url: /categories/ZSH/
+  - title: "Vim"
+    url: /categories/Vim/
+  - title: "Python"
+    url: /categories/Python/
+  - title: "C++"
+    url: /categories/C++/
+  - title: "CMake"
+    url: /categories/CMake/
+  - title: "PySide"
+    url: /categories/PySide/
+  - title: "Qt"
+    url: /categories/Qt/
+  - title: "Lua"
+    url: /categories/Lua/
+  - title: "其他"
+    url: /categories/其他/
