@@ -77,13 +77,13 @@ Zsh），Shell 负责接收你敲的文字指令，交给操作系统去执行�
 如果你是 **Mac 用户**——恭喜，自带的「终端」(Terminal) 就能用，而且默认是 `zsh`，非常强大。
 
 如果你是 **Windows 用户**——建议装个 [Git Bash](https://git-scm.com/) 或者直接用 WSL（Windows Subsystem for Linux）。这个
-系列后面的例子主要基于 `bash`，在 `zsh` 下也基本通用。
+系列后面的例子主要基于 `zsh`，在 `bash` 下也基本通用。
 
 打开你的终端，看到那个闪烁的光标了吗？那就是电脑在等你下命令。
 
 先试一行最简单的：
 
-```bash
+```zsh
 echo "Hello, world!"
 ```
 
