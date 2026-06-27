@@ -30,16 +30,16 @@ tags:
 
 ```
 /
-├── Applications/
-├── System/
-├── Users/
-│   └── dax/
-│       ├── Documents/
-│       ├── Downloads/
-│       └── Desktop/
-└── usr/
-    ├── bin/
-    └── local/
+├── Applications
+├── System
+├── Users
+│   └── dax
+│       ├── Desktop
+│       ├── Documents
+│       └── Downloads
+└── usr
+    ├── bin
+    └── local
 ```
 
 根目录下面有几个大的子目录，每个子目录下面又可以有很多子目录，层层嵌套。就像往地上扔了一棵树，根朝上、枝丫向下的那种感觉。
