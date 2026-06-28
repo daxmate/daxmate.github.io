@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
 gem "jekyll-include-cache", group: :jekyll_plugins
+gem "minimal-mistakes-jekyll"
 
 # Override liquid to 4.0.4+ to fix `tainted?` NoMethodError on Ruby 3.3+
 gem "liquid", ">= 4.0.4"
