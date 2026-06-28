@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(5)--查看和搜索文件内容"
+title:  "从零开始学命令行(5)--查看文件内容"
 date:   2026-06-29 12:00:00 +0800
 categories:
   - Command Line
@@ -10,36 +10,21 @@ tags:
   - cat
   - head
   - tail
-  - grep
   - less
   - wc
 ---
 
-前几篇我们学了文件操作的基本功——创建、复制、移动、删除。上一篇特别花了篇幅讲删除的事，核心就一个意思：**别用 `rm`，用 `trash`**。
+前几篇我们学了文件操作的基本功——创建、复制、移动、删除。现在的问题是：文件里有内容了，怎么看？
 
-今天的事就是看文件里面写的是什么——以及怎么在一堆内容里快速找到想要的那一行。
+上一篇我们其实已经用过 `cat` 和 `less` 了，但只是最基本用法。今天把它们展开，再加上 `head`、`tail` 和 `wc`——几个不用动脑、但每天都会用到的查看工具。
 
 ---
 
 ## `cat` 的更多用法
 
-上一篇已经用过 `cat` 了，就是直接把文件内容打印到屏幕上。但它不止能看一个文件：
+`cat` 就是把文件内容打印到屏幕上。简单，但有几个变体很实用。
 
-```zsh
-cat file1.txt file2.txt
-```
-
-会把两个文件的内容连在一起输出。`cat` 的名字就是这么来的——**concatenate**，串联。
-
-日常用得更多的其实是配合重定向来合并文件：
-
-```zsh
-cat notes.txt diary.txt > combined.txt
-```
-
-把两个文件的内容合并成一个新文件。比打开编辑器复制粘贴快得多。
-
-还有一个实用技巧——给 `cat` 加上行号：
+### 显示行号
 
 ```zsh
 cat -n notes.txt
@@ -50,26 +35,74 @@ cat -n notes.txt
      2	This is a second line.
 ```
 
-调试配置文件的时候特别好用，想看哪一行直接看行号就行。
+调试配置文件的时候特别好用——想跟别人说「看第 27 行」，直接报行号就行。
+
+### 合并文件
+
+`cat` 的名字来自 **concatenate**（串联），把多个文件串起来输出就是它的本职工作：
+
+```zsh
+cat file1.txt file2.txt
+```
+
+配合重定向可以合并文件：
+
+```zsh
+cat notes.txt diary.txt > combined.txt
+```
+```zsh
+cat notes.txt diary.txt >> combined.txt
+```
+
+`>` 是覆盖写入，`>>` 是追加到末尾。上一篇讲过这个区别。
+
+### 在终端里快速创建小文件
+
+有时候想快速写个几句话的文件，不想打开编辑器：
+
+```zsh
+cat > quick-note.txt
+```
+
+然后直接敲内容，敲完了按 `Ctrl + D` 结束输入。屏幕上看起来是这样的：
+
+```zsh
+cat > quick-note.txt
+这是一段话。
+按 Ctrl+D 结束。
+```
+
+按 `Ctrl + D` 之后，内容就写进去了。查看一下：
+
+```zsh
+cat quick-note.txt
+```
+
+```
+这是一段话。
+按 Ctrl+D 结束。
+```
+
+比 `echo` 一行行 `>>` 方便多了。这个技巧在写脚本的时候经常用。
 
 ---
 
 ## 只看开头几行：`head`
 
-有时候文件太长，你只想知道它长什么样——看看头几行就够了。
+有时候文件很长，你只想知道它长什么样——看看头几行就够了。
 
 ```zsh
-head notes.txt
+head long-file.txt
 ```
 
 默认显示前 10 行。想多看或少看，加 `-n`：
 
 ```zsh
-head -n 5 notes.txt    # 只看前 5 行
-head -n 20 notes.txt   # 只看前 20 行
+head -n 5 long-file.txt    # 只看前 5 行
+head -n 20 long-file.txt   # 只看前 20 行
 ```
 
-这个命令最适合快速确认文件的格式。比如拿到一个 CSV 文件，`head -n 3` 看一下头三行就明白数据结构了。
+这个命令最适合快速确认文件的格式。拿到一个 CSV 文件，`head -n 3` 看一下头三行就明白数据结构了。
 
 ---
 
@@ -78,13 +111,13 @@ head -n 20 notes.txt   # 只看前 20 行
 `tail` 跟 `head` 正好相反——只看文件末尾：
 
 ```zsh
-tail notes.txt
+tail long-file.txt
 ```
 
 也是默认 10 行。`-n` 控制行数：
 
 ```zsh
-tail -n 5 notes.txt
+tail -n 5 long-file.txt
 ```
 
 但 `tail` 最闪光的地方是 `-f` 选项——**follow**，实时跟踪：
@@ -123,165 +156,41 @@ wc -l notes.txt
 2 notes.txt
 ```
 
-想知道代码仓库里有多少行代码？一行搞定：
+查一下项目里有多少个代码文件：
 
 ```zsh
-find . -name "*.py" | xargs wc -l
+ls *.py | wc -l
 ```
+
+一秒知道有多少个 Python 文件。
 
 ---
 
-## 文本搜索之王：`grep`
+## 把命令串起来：管道 `|`
 
-终于到了 `grep`。
-
-如果你只学一个命令行文本处理工具，学 `grep`。它是**全局正则搜索**（Global Regular Expression Print）的缩写，名字听起来很唬人，但做的事很简单——**在一堆文字里找匹配的行**。
-
-最基本用法：
+前面用过几次 `>` 重定向——把命令的输出写到文件里。管道 `|` 类似，但它不是写到文件，而是**传给下一个命令**。
 
 ```zsh
-grep "关键词" 文件名
+cat long-file.txt | head -n 5
 ```
 
-比如在日志里搜 "error"：
+把 `cat` 输出的内容「喂」给 `head`，`head` 只取前 5 行。
 
 ```zsh
-grep "error" system.log
+cat long-file.txt | wc -l
 ```
 
-```
-2026-06-28 10:00:01 [ERROR] connection timeout
-2026-06-28 10:00:05 [ERROR] failed to connect
-```
+把文件内容传给 `wc -l`，直接数行数。
 
-所有包含 "error" 的行都被列出来了。
+现在看起来有点多余——`wc -l long-file.txt` 就行了，不用多此一举加 `cat`。但后面学到更多命令之后，管道的威力才会真正显现出来。这里先知道有这个东西，后面会大量用到。
 
-行号也想要的话，加 `-n`：
-
-```zsh
-grep -n "error" system.log
-```
-
-```
-12: 2026-06-28 10:00:01 [ERROR] connection timeout
-27: 2026-06-28 10:00:05 [ERROR] failed to connect
-```
-
----
-
-### 不区分大小写：`-i`
-
-默认 `grep` 是区分大小写的。`"Error"` 和 `"error"` 是两回事。加 `-i` 就不分了：
-
-```zsh
-grep -i "error" system.log
-```
-
-会搜到 `ERROR`、`Error`、`error` 所有变体。
-
----
-
-### 反向匹配：`-v`
-
-有时候你想看的不是匹配的行，而是**不匹配**的行。比如过滤掉注释行：
-
-```zsh
-grep -v "^#" config.ini
-```
-
-`^#` 表示以 `#` 开头的行，`-v` 就是排除它们。这样配置文件里的注释就全被过滤掉了，只看有效配置。
-
----
-
-### 递归搜索整个目录：`-r`
-
-如果你不知道关键词在哪个文件里，让 `grep` 自己翻：
-
-```zsh
-grep -r "TODO" ~/projects/
-```
-
-递归搜索 `~/projects/` 下所有文件，找出哪些文件里含有 TODO。这个在接手别人代码的时候特别有用——看看还有哪些没干完的活。
-
-加上 `-l` 就只看文件名，不显示匹配的内容本身：
-
-```zsh
-grep -rl "TODO" ~/projects/
-```
-
-只看哪些文件有 TODO，不看具体内容。
-
----
-
-### 只匹配整个单词：`-w`
-
-搜 `"cat"` 的时候，`grep` 会把 `catalog`、`category`、`concatenate` 里的 `cat` 也匹配出来。加 `-w`（word）就能只匹配完整单词：
-
-```zsh
-grep -w "cat" notes.txt
-```
-
----
-
-### 统计匹配行数：`-c`
-
-不想看内容，只想知道有多少行匹配：
-
-```zsh
-grep -c "error" system.log
-```
-
-```
-15
-```
-
-有 15 行包含 "error"。
-
----
-
-### 实用组合
-
-这几个选项可以组合起来用，效果翻倍：
-
-```zsh
-grep -rin "password" ~/config/
-```
-
-不区分大小写、显示行号、递归搜索——三秒内翻遍整个目录找到所有跟密码相关的配置。
-
----
-
-## `grep` 配合管道
-
-`grep` 真正的威力在于跟管道 `|` 配合。管道可以把一个命令的输出「喂」给另一个命令：
-
-```zsh
-ps aux | grep "python"
-```
-
-列出所有进程，只留下包含 "python" 的。想找某个程序有没有在运行，这个是最快的办法。
-
-再配合 `head`：
-
-```zsh
-dmesg | grep "error" | head -n 5
-```
-
-从系统日志里搜出所有错误，只看前 5 条。
-
-`wc -l` 也是一样：
-
-```zsh
-history | grep "git" | wc -l
-```
-
-看看自己今天敲了多少次 git 命令。数字大说明在频繁提交，数字小说明该努力了。
+> 初学阶段记住一条：`|` 把左边命令的输出变成右边命令的输入。
 
 ---
 
 ## 动手试试
 
-找一个文件多的目录，或者直接用之前的练习目录（没有就新建一个）：
+找个文件多的目录试试，或者直接新建一个：
 
 ```zsh
 cd ~/cmd_practice 2>/dev/null || mkdir ~/cmd_practice && cd ~/cmd_practice
@@ -290,27 +199,38 @@ cd ~/cmd_practice 2>/dev/null || mkdir ~/cmd_practice && cd ~/cmd_practice
 echo "Line 1: hello" > test1.txt
 echo "Line 2: world" >> test1.txt
 echo "Line 3: hello again" >> test1.txt
-echo "APPLE" > fruit.txt
-echo "banana" >> fruit.txt
-echo "CHERRY" >> fruit.txt
-echo "apple pie" > recipe.txt
+echo "Line 4: foo" >> test1.txt
+echo "Line 5: bar" >> test1.txt
+echo "Line 6: baz" >> test1.txt
+echo "Line 7: qux" >> test1.txt
+echo "Line 8: quux" >> test1.txt
+echo "Line 9: corge" >> test1.txt
+echo "Line 10: grault" >> test1.txt
+echo "Line 11: garply" >> test1.txt
+echo "Line 12: waldo" >> test1.txt
 
-# 看文件
+# 看全部
 cat test1.txt
-head -n 2 test1.txt
-tail -n 1 test1.txt
 
-# 搜关键词
-grep "hello" test1.txt
-grep -i "apple" fruit.txt recipe.txt
-grep -c "apple" fruit.txt
+# 带行号
+cat -n test1.txt
 
-# 管道练习
-cat test1.txt | grep "hello" | head -n 1
-cat fruit.txt recipe.txt | grep -i "apple" | wc -l
+# 只看开头
+head test1.txt
+head -n 3 test1.txt
+
+# 只看末尾
+tail test1.txt
+tail -n 3 test1.txt
+
+# 数一下
+wc test1.txt
+wc -l test1.txt
+
+# 用 | 串起来
+cat test1.txt | head -n 5
+cat test1.txt | tail -n 3 | wc -l
 ```
-
-试试不同的 `grep` 选项组合，感受一下怎么快速从一堆文本里捞出自己想要的内容。
 
 ---
 
@@ -318,18 +238,19 @@ cat fruit.txt recipe.txt | grep -i "apple" | wc -l
 
 | 命令 | 作用 | 常用搭档 |
 |------|------|----------|
-| `cat` | 看文件内容 | `-n` 显示行号，`cat a b > c` 合并文件 |
+| `cat` | 看文件内容 | `-n` 显示行号；`cat a b > c` 合并文件 |
+| `cat > file` | 快速创建文件 | `Ctrl + D` 结束输入 |
 | `head` | 看文件开头 | `-n 行数` |
 | `tail` | 看文件末尾 | `-f` 实时跟踪日志 |
 | `wc` | 数行数/字数/字节数 | `-l` 只看行数 |
-| `grep` | 搜索文本 | `-i`（忽略大小写）、`-r`（递归）、`-n`（行号）、`-v`（反向）、`-w`（整词）、`-c`（计数） |
-| `\|` 管道 | 把上一条命令的输出传给下一条 | 跟 `grep`、`wc`、`head`、`tail` 组合使用 |
+| `\|` 管道 | 把输出传给下一个命令 | 跟 `head`、`tail`、`wc` 组合 |
 
-`grep` 的选项看着多，其实记三个就够了：`-i`、`-r`、`-n`。剩下的遇到了再查。
+后面还会学到更强大的文件搜索工具——`grep`，它能在文件内容里搜索关键词，还能配合正则表达式做精确匹配。不过那涉及到正则表达式，是个值得单独开一篇来讲的话题。
 
 下一篇我们聊文件权限——为什么有些文件能看不能改，`chmod` 到底在干什么。
 
 ---
 
-> [← 上一篇：文件操作：创建、读取、编辑、删除]({% post_url 2026-06-28-file-crud %})  
+> [← 上一篇：文件操作：创建、读取、编辑、删除]({% post_url 2026-06-28-file-crud %})
+>
 > 下一篇：文件权限——谁可以读、写、执行
