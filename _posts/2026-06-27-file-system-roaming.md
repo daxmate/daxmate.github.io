@@ -298,5 +298,5 @@ cd Doc[Tab]
 
 ---
 
-> ← 上一篇：Shell 的前世今生（明日发布）  
+> [← 上一篇：Shell 的前世今生]({% post_url 2026-06-28-shell-history %})  
 > [下一篇：文件操作——新建、复制、移动与删除 →]({% post_url 2026-06-28-file-crud %})

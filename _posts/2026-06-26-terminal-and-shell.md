@@ -161,4 +161,4 @@ Downloads 文件夹的详细内容，包括隐藏文件。」`ls` 干活，Shell
 ---
 
 > [← 上一篇：从零开始学命令行(1)--开工]({% post_url 2026-06-25-command-line-intro %})  
-> 下一篇：Shell 的前世今生 →（明日发布）
+> [下一篇：Shell 的前世今生 →]({% post_url 2026-06-28-shell-history %})
