@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(6)--查看文件内容"
+title:  "从零开始学命令行：查看文件内容"
 date:   2026-06-30 12:00:00 +0800
 categories:
   - Command Line
@@ -251,6 +251,4 @@ cat test1.txt | tail -n 3 | wc -l
 
 ---
 
-> [← 上一篇：文件操作：创建、读取、编辑、删除]({% post_url 2026-06-28-file-crud %})
->
-> 下一篇：文件权限——谁可以读、写、执行
+> [← 查看系列目录]({% link _pages/series-command-line.md %})

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(4)--文件系统漫游"
+title:  "从零开始学命令行：文件系统漫游"
 date:   2026-06-27 12:00:00 +0800
 categories:
   - Command Line
@@ -298,5 +298,4 @@ cd Doc[Tab]
 
 ---
 
-> [← 上一篇：Shell 的前世今生]({% post_url 2026-06-26-shell-history %})  
-> [下一篇：文件操作——新建、复制、移动与删除 →]({% post_url 2026-06-28-file-crud %})
+> [← 查看系列目录]({% link _pages/series-command-line.md %})

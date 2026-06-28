@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(1)--开工"
+title:  "从零开始学命令行：开工"
 date:   2026-06-25 16:00:00 +0800
 categories:
   - Command Line
@@ -122,4 +122,4 @@ echo "Hello, world!"
 
 ---
 
-> [下一篇：终端和Shell →]({% post_url 2026-06-26-terminal-and-shell %})
+> [← 查看系列目录]({% link _pages/series-command-line.md %})

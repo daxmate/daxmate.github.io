@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(7)--获取帮助与认识命令"
+title:  "从零开始学命令行：获取帮助与认识命令"
 date:   2026-07-01 12:00:00 +0800
 categories:
   - Command Line
@@ -270,6 +270,4 @@ unalias greet   # 删除别名
 | `which 命令` | 找程序文件路径 | 确认程序是否安装 |
 | `command 命令` | 绕过别名执行 | alias 了某个命令但偶尔想用原版 |
 
-> [← 上一篇：查看文件内容]({% post_url 2026-06-30-file-content %})
->
-> 下一篇：文件权限——谁可以读、写、执行
+> [← 查看系列目录]({% link _pages/series-command-line.md %})

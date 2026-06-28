@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(2)--终端与Shell"
+title:  "从零开始学命令行：终端与Shell"
 date:   2026-06-26 10:00:00 +0800
 categories:
   - Command Line
@@ -154,11 +154,8 @@ Downloads 文件夹的详细内容，包括隐藏文件。」`ls` 干活，Shell
 
 它们的关系就像浏览器和网页——我们用浏览器打开网页，看到的内容是网页提供的。换一个 Shell，就像打开了一个功能更丰富的网页。
 
-现在搞清楚了谁是窗户、谁是窗户里跟我们说话的那个人。但 Shell 这个「人」本身还有很多故事——它从哪来？sh、bash、zsh、fish 都是什么关系？
-
-下一篇我们停下实操，聊聊 Shell 的发展史。搞清楚了这些来龙去脉，后面学命令的时候心里会更有底。
+现在搞清楚了谁是窗户、谁是窗户里跟我们说话的那个人。
 
 ---
 
-> [← 上一篇：从零开始学命令行(1)--开工]({% post_url 2026-06-25-command-line-intro %})  
-> [下一篇：Shell 的前世今生 →]({% post_url 2026-06-26-shell-history %})
+> [← 查看系列目录]({% link _pages/series-command-line.md %})

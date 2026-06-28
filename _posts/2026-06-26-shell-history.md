@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行(3)--Shell 的前世今生"
+title:  "从零开始学命令行：Shell 的前世今生"
 date:   2026-06-26 23:59:00 +0800
 categories:
   - Command Line
@@ -110,6 +110,4 @@ Bash 和 zsh 都在努力兼容 40 年前的 sh 语法，这意味着很多糟�
 
 ---
 
-> [← 上一篇：终端与Shell]({% post_url 2026-06-26-terminal-and-shell %})
->
-> [下一篇：文件系统漫游 →]({% post_url 2026-06-27-file-system-roaming %})
+> [← 查看系列目录]({% link _pages/series-command-line.md %})
