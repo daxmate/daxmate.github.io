@@ -89,7 +89,7 @@ cat quick-note.txt
 
 ## 只看开头几行：`head`
 
-有时候文件很长，你只想知道它长什么样——看看头几行就够了。
+有时候文件很长，我们只想知道它长什么样——看看头几行就够了。
 
 ```zsh
 head long-file.txt
@@ -134,7 +134,7 @@ tail -f /var/log/system.log
 
 ## 数行数字数字：`wc`
 
-`wc` 是 **Word Count** 的缩写。不加选项的时候，它会告诉你三件事：
+`wc` 是 **Word Count** 的缩写。不加选项的时候，它会告诉我们三件事：
 
 ```zsh
 wc notes.txt
