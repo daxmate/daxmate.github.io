@@ -122,4 +122,4 @@ echo "Hello, world!"
 
 ---
 
-*下一篇：终端和shell*
+> [下一篇：终端和Shell →]({% post_url 2026-06-26-terminal-and-shell %})

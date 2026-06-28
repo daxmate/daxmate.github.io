@@ -140,4 +140,5 @@ Downloads 文件夹的详细内容，包括隐藏文件。」`ls` 干活，Shell
 
 ---
 
-*下一篇：文件系统漫游*
+> [← 上一篇：从零开始学命令行(1)--开工]({% post_url 2026-06-25-command-line-intro %})  
+> [下一篇：文件系统漫游 →]({% post_url 2026-06-27-file-system-roaming %})
