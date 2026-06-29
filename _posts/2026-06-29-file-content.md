@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：查看文件内容"
-date:   2026-06-30 12:00:00 +0800
+date:   2026-06-29 09:45:00 +0800
 categories:
   - Command Line
 tags:

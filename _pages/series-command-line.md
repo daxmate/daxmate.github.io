@@ -12,7 +12,7 @@ author_profile: false
 3. [Shell 的前世今生]({% post_url 2026-06-26-shell-history %})
 4. [文件系统漫游]({% post_url 2026-06-27-file-system-roaming %})
 5. [文件操作：创建、读取、编辑、删除]({% post_url 2026-06-28-file-crud %})
-6. 查看文件内容 — *待发布*
+6. [查看文件内容]({% post_url 2026-06-29-file-content %})
 7. 获取帮助与认识命令 — *待发布*
 
 ---
