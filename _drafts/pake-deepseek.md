@@ -48,7 +48,7 @@ npm install -g pake-cli
 pake https://chat.deepseek.com --name DeepSeek
 ```
 
-等几十秒，一个叫 `DeepSeek.app` 的文件就出现在当前目录了。拖进 Applications 文件夹，完事。
+等几十秒，一个叫 `DeepSeek.dmg` 的安装包出现在当前目录，自动弹出安装界面，拖进 Applications 文件夹就完事。
 
 打开之后就是一个干净的 DeepSeek 窗口——没有浏览器地址栏、没有多余的按钮栏，就是一个纯粹的 DeepSeek 界面。跟原生 App 的体验几乎一样。
 
