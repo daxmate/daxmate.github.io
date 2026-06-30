@@ -28,7 +28,13 @@ GitHub 仓库：[tw93/Pake](https://github.com/tw93/Pake)
 
 ## 安装
 
-一行命令：
+最省事的方式是用 Homebrew：
+
+```zsh
+brew install pake
+```
+
+如果不用 Homebrew，也可以用 npm：
 
 ```zsh
 npm install -g pake-cli
