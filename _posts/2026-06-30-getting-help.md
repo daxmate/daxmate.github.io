@@ -10,7 +10,8 @@ tags:
   - help
   - type
   - which
-  - apropos
+  - whence
+  - where
 ---
 
 到这个阶段，我们已经学了十几个命令了。新问题来了——**这个命令怎么用来着？** 记不住选项怎么办？发现一个不认识的新命令，怎么知道它是干什么的？
@@ -199,6 +200,46 @@ which node  && echo "Node.js 已安装" || echo "未安装"
 
 ---
 
+## zsh 的增强版：`whence` 和 `where`
+
+如果你是 zsh 用户，`type` 和 `which` 各有一个加强版值得了解。
+
+### `whence`：加强版 `type`
+
+`whence` 是 zsh 原生的命令查询工具，比 `type` 更灵活：
+
+```zsh
+whence ls
+# → /bin/ls
+
+whence -v ls
+# → ls is a shell function from ~/.zshrc
+
+whence -c ls
+# → 显示实际上会执行的那个命令
+
+whence -w ls
+# → command（只告诉你类型，不显示路径）
+```
+
+`whence -v` 最实用——它会告诉你**这个命令到底是谁定义的**。如果你装了某个工具但行为不对，用 `whence -v` 看看路径是不是你预期的那一个。
+
+### `where`：一个名字，多个位置
+
+`which` 只告诉你第一个匹配的路径。但有时候一个命令**装了多个版本**：
+
+```zsh
+where python
+# → /usr/local/bin/python      # Homebrew 装的
+# → /usr/bin/python            # 系统自带的
+```
+
+哪一个会被执行？靠前的那一个。`where` 把全部路径列出来，一眼就知道优先级。
+
+装了多个 Python、多个 Node 版本、不知道到底在跑其中哪一个的时候——`where` 能帮你理清楚。
+
+---
+
 ## 绕过别名：`command`
 
 前面讲过可以用 alias 把 `rm` 改成警告。那如果真的需要执行原本的 `rm` 怎么办？
@@ -241,6 +282,10 @@ type which
 which python
 which git
 
+# zsh 增强版
+whence -v python
+where python
+
 # 创建别名再绕过
 alias greet='echo "hello"'
 type greet
@@ -262,6 +307,8 @@ unalias greet   # 删除别名
 | `apropos 关键词` | 按功能搜索命令 | 不常用，macOS 上经常搜不到，不如上网搜 |
 | `type 命令` | 看命令的类型 | 命令行为异常时排查原因 |
 | `which 命令` | 找程序文件路径 | 确认程序是否安装 |
+| `whence -v 命令` | zsh 版 `type`，更详细 | 追查命令来源 |
+| `where 命令` | 列出命令所有位置 | 装了多个版本时辨清优先级 |
 | `command 命令` | 绕过别名执行 | alias 了某个命令但偶尔想用原版 |
 
 > [← 查看系列目录]({% link _pages/series-command-line.md %})
