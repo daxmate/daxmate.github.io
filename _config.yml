@@ -292,4 +292,6 @@ defaults:
       sidebar:
         nav:
           - "sidebar-categories"
+      toc: true
+      toc_sticky: true
 
