@@ -209,17 +209,17 @@ which git
 /usr/bin/git
 ```
 
-跟 `type` 不同，`which` 只显示外部程序的路径，对别名和内置命令它什么也不说：
+跟 `type` 不同，`which` 只关心命令对应的程序文件在哪里，不展开别名：
 
 ```zsh
 which cd
 ```
 
 ```
-cd not found
+cd: shell built-in command
 ```
 
-（因为 `cd` 是 Shell 内置的，没有对应的外部程序文件。）
+zsh 的 `which` 是内置版本，能认出内置命令。如果用系统自带的 `/usr/bin/which`，碰到内置命令就会说 `cd not found`——不过我们一般不会刻意去调系统版。
 
 所以 `which` 最常见的用法是：确认某个程序有没有装、装在哪里：
 
