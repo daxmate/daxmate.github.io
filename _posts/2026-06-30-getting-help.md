@@ -97,23 +97,21 @@ command -h       # 试试这个
 
 这是最难的情况——**知道想做什么，但不知道用什么命令**。
 
-比如想搜索文件，但不知道是 `find` 还是 `grep`。这时候用 `apropos`：
+理论上有个命令叫 `apropos`（等于 `man -k`），会搜索所有 man 手册的简介，把包含关键词的命令列出来：
 
 ```zsh
-apropos "search file"
+apropos "compress"
 ```
 
-它会搜索所有 `man` 手册的一行简介（NAME 部分），把包含关键词的命令列出来。
-
-`apropos` 等于 `man -k`，两个写法一样：
+但在实际使用中，这个命令在 macOS 上常常搜不出结果——它依赖的索引数据库不一定完整。可以试试先重建索引：
 
 ```zsh
-man -k "compress"
+sudo /usr/libexec/makewhatis
 ```
 
-就能找到所有跟压缩相关的命令——`gzip`、`zip`、`tar`、`compress`……
+跑完之后再搜，可能会好一些，但也不要抱太高期望。
 
-初学阶段不常用，但思维到了「想做什么事但不知道用什么命令」的阶段，它就是救命工具。
+说实话，初学阶段最靠谱的「搜命令」方式是**直接上网搜**——"macOS command line how to find files" 比 `apropos` 管用得多。`apropos` 知道有这个东西就行，等以后在 Linux 服务器上也许会用到。
 
 ---
 
@@ -234,10 +232,6 @@ man cp
 ls --help
 cp --help
 
-# 按功能搜命令
-apropos "directory"
-apropos "sort"
-
 # 看命令类型
 type cd
 type ls
@@ -265,7 +259,7 @@ unalias greet   # 删除别名
 |------|------|----------|
 | `man 命令` | 查看完整手册 | 需要详细了解一个命令 |
 | `命令 --help` | 查看快速参考 | 选项忘了，看一眼 |
-| `apropos 关键词` | 按功能搜索命令 | 知道想做什么，不知道用什么命令 |
+| `apropos 关键词` | 按功能搜索命令 | 不常用，macOS 上经常搜不到，不如上网搜 |
 | `type 命令` | 看命令的类型 | 命令行为异常时排查原因 |
 | `which 命令` | 找程序文件路径 | 确认程序是否安装 |
 | `command 命令` | 绕过别名执行 | alias 了某个命令但偶尔想用原版 |
