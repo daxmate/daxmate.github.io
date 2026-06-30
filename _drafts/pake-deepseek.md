@@ -22,7 +22,7 @@ Pake 是一个命令行工具，用 Rust + Tauri 写成。跟 Electron 的思路
 - Electron 会给每个 App 打包一个完整的 Chromium 浏览器，体积 100MB 起步
 - Pake 用的是操作系统自带的 WebView（macOS 上就是 Safari 的 WebKit），整个 App 只有几 MB
 
-所以用 Pake 打包出来的 App 启动飞快、不占内存，而且依然是原生的 macOS 应用——能出现在 Dock 里、能用 Cmd+Tab 切换、能单独设置全屏。
+所以用 Pake 打包出来的 App 启动飞快、不占内存，而且跟原生应用体验一样——macOS 上能出现在 Dock 里、能用 Cmd+Tab 切换，Windows 和 Linux 上也同样适用。
 
 GitHub 仓库：[tw93/Pake](https://github.com/tw93/Pake)
 
@@ -67,8 +67,6 @@ pake https://chat.deepseek.com --name DeepSeek --hide-title-bar
 3. **干净的界面。** 没有书签栏、扩展图标、地址栏——真正沉浸式的聊天窗口
 4. **内存开销低。** 因为是 WebView 而不是 Chromium，内存占用只有几十 MB
 
-以前用 Fluid 这类工具也做过类似的事，但 Pake 更轻量、配置更简单，而且是开源的。
-
 ## 不止 DeepSeek
 
 Pake 的 GitHub Release 页面上已经有一堆预打包好的 App——ChatGPT、Claude、YouTube、YouTube Music、Twitter/X……可以直接下载用。
@@ -80,7 +78,3 @@ Pake 的 GitHub Release 页面上已经有一堆预打包好的 App——ChatGPT
 `pake <URL>` 一行命令，把一个网页变成桌面 App。适合那些每天都要开、但又不想要浏览器包袱的网页工具。
 
 DeepSeek 的网页版体验本来就不错，套上 Pake 之后就像有了一个真正属于自己的 AI 桌面助手。
-
----
-
-*也许以后会写写怎么给它换个好看的图标。*
