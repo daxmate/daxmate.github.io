@@ -95,7 +95,7 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "编程爱好者，写点代码和博客"
   location         : "Nantong, China"
-  email            : "dax26#gmail.com"
+  email            : "dax26@gmail.com"
   # fediverse      : "@you@instance.social"
   links:
     - label: "Email"
