@@ -225,6 +225,18 @@ cd: shell built-in command
 which node  && echo "Node.js 已安装" || echo "未安装"
 ```
 
+`which` 还有几个选项值得了解：
+
+```zsh
+which -s node   # 安静模式，不输出任何东西，只看退出码（0=找到，1=没找到）
+which -w cd     # 只显示命令类型，不显示路径
+# → cd: builtin
+```
+
+`-s` 在写脚本的时候特别有用——比如检测某个工具有没有装，再决定要不要安装。`-w` 可以快速看一眼命令到底是内置还是外部程序。
+
+另外 `which -a` 可以列出所有匹配的位置（跟 `where` 类似），但日常我们直接用 `where` 就够了。
+
 ---
 
 ## zsh 的增强版：`whence` 和 `where`
