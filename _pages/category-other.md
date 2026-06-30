@@ -1,12 +1,12 @@
 ---
-title: "其他"
+title: "Other"
 layout: archive
-permalink: /categories/其他/
+permalink: /categories/other/
 author_profile: false
 entries_layout: list
 ---
 
-{% assign cat_posts = site.categories["其他"] %}
+{% assign cat_posts = site.categories["other"] %}
 {% if cat_posts.size > 0 %}
   {% for post in cat_posts %}
     {% include archive-single.html %}
