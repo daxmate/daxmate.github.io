@@ -219,8 +219,6 @@ which cd
 cd: shell built-in command
 ```
 
-zsh 的 `which` 是内置版本，能认出内置命令。如果用系统自带的 `/usr/bin/which`，碰到内置命令就会说 `cd not found`——不过我们一般不会刻意去调系统版。
-
 所以 `which` 最常见的用法是：确认某个程序有没有装、装在哪里：
 
 ```zsh
