@@ -230,7 +230,7 @@ groups
 
 ```zsh
 id
-# uid=501(dax) gid=20(staff) groups=20(staff),80(admin),...
+# uid=501(dax) gid=20(staff) groups=20(staff),...
 ```
 
 日常几乎只跟 `staff` 打交道，知道其他组的存在就行。等以后配服务器、装 Docker 的时候，自然会碰到 `www-data` 和 `docker`。
