@@ -216,7 +216,7 @@ sass:
 
 
 # Outputting
-permalink: /:categories/:title/
+permalink: /:title/
 timezone: Asia/Shanghai
 
 
