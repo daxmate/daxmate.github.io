@@ -19,7 +19,7 @@ tags:
 
 本文记录完整的配置过程。
 
-> 如果对 launchctl 不熟，可以先看上一篇 [macOS 上管理后台服务：launchctl 入门]({% post_url 2026-06-29-launchctl-on-macos %})。
+> 如果对 launchctl 不熟，可以先看 macOS 上管理后台服务：launchctl 入门。
 
 ---
 
