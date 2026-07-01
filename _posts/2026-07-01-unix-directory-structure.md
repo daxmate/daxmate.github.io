@@ -27,11 +27,11 @@ ls /
 
 ```
 Applications  System  Users  Volumes
-bin           dev     home   sbin
-etc           tmp     usr    var
+bin           dev     sbin   tmp
+etc           usr     var
 ```
 
-macOS 的根目录比 Linux 多了一些 Apple 特有的目录，但核心的 `bin`、`etc`、`usr`、`var` 在两者身上是一样的。这篇讲的是这些 Unix 通用的部分。
+（Linux 上还会多一个 `/home`，macOS 用 `/Users` 代替。）这篇讲的是这些 Unix 通用的部分。
 
 ---
 
@@ -100,11 +100,11 @@ Unix 把一切当成文件处理，硬件也不例外：
 
 这就是为什么前几篇我们敲 `tty` 会输出 `/dev/ttys001`——它真的是一个文件。
 
-### `/home` — 用户的家
+### `/home` — 用户的家（Linux）
 
-这我们最熟了。每个用户一个目录，放自己的文档、下载、配置。`~` 就是这个目录的简写。
+Linux 上每个用户一个目录，放自己的文档、下载、配置。`~` 就是这个目录的简写。
 
-macOS 上叫 `/Users`，Linux 上叫 `/home`。作用一样。
+macOS 上对应的叫 `/Users`。作用一样，名字不同而已。
 
 ### `/opt` — 可选软件
 
