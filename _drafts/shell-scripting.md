@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：写一个简单的脚本"
-date:   2026-07-10 09:00:00 +0800
+date:   2026-07-01 14:00:00 +0800
 categories:
   - Command Line
 tags:
