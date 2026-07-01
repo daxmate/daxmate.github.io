@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：Unix 目录结构"
-date:   2026-06-30 17:50:00 +0800
+date:   2026-07-01 13:45:00 +0800
 categories:
   - Command Line
 tags:
@@ -53,14 +53,12 @@ macOS 的根目录比 Linux 多了一些 Apple 特有的目录，但核心的 `b
 
 ```zsh
 /usr/bin        # 更多的命令（和 /bin 的区别已经越来越模糊）
-/usr/local      # 我们自己装的软件（Homebrew 装的东西就在这里）
-/usr/local/bin  # Homebrew 装的命令行工具
+/usr/local      # 自己装的软件（Intel Mac 上 Homebrew 装在这里）
+/usr/local/bin  # Intel Mac 上 Homebrew 的命令行工具
 /usr/share      # 共享数据（文档、字体、图标）
 ```
 
 为什么要把 `/usr/bin` 和 `/bin` 拆开？历史原因——早期硬盘太小，分两套：系统启动必需的放 `/bin`，不那么急的放 `/usr/bin`。现在硬盘早大了，但这个传统还在。
-
-我们最常打交道的是 `/usr/local/bin`——Homebrew 装的 `git`、`node`、`python` 全在这里。
 
 ### `/etc` — 配置文件
 
@@ -110,7 +108,11 @@ macOS 上叫 `/Users`，Linux 上叫 `/home`。作用一样。
 
 ### `/opt` — 可选软件
 
-一些不是系统自带也不是包管理器装的软件会放在这。macOS 上基本用不到，更多出现在 Linux 服务器上。
+一些不是系统自带的独立软件会放在这里。在 Apple Silicon（M1/M2/M3）Mac 上，**Homebrew 就装在 `/opt/homebrew/`**，里面结构跟 `/usr/local/` 一样——`/opt/homebrew/bin` 放命令行工具，`/opt/homebrew/Cellar` 放具体软件包。
+
+所以如果你用的是 Apple Silicon Mac，用的其实是 `/opt/homebrew/bin` 而不是 `/usr/local/bin`。可以用 `which brew` 确认一下。
+
+Intel Mac 和 Linux 上 Homebrew 则放在 `/usr/local/`。
 
 ---
 
@@ -130,10 +132,10 @@ macOS 的根目录还有几个别的：
 
 初学阶段不需要记住每一个，知道下面这几个就能解决大部分问题了：
 
-- 装了个命令行工具不知道装哪儿了 → `/usr/local/bin`
+- 装了个命令行工具不知道装哪儿了 → `/usr/local/bin`（Intel Mac）或 `/opt/homebrew/bin`（Apple Silicon）
 - 某个服务跑不起来想看日志 → `/var/log`
 - 想确认一个配置文件的内容 → `/etc` 里找
-- 工具起了冲突不知道用哪个 → `which` 查路径，看是不是 `/usr/local/bin` 盖掉了 `/usr/bin`
+- 工具起了冲突不知道用哪个 → `which` 查路径，看是不是 Homebrew 的覆盖了系统自带的
 
 ---
 
