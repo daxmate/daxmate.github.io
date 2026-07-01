@@ -92,7 +92,7 @@ macOS 的根目录比 Linux 多了一些 Apple 特有的目录，但核心的 `b
 Unix 把一切当成文件处理，硬件也不例外：
 
 ```zsh
-/dev/sda         # 硬盘
+/dev/disk0      # 硬盘（macOS 用 disk0、disk1...，Linux 用 sda、sdb...）
 /dev/tty         # 终端
 /dev/null        # 黑洞——写进去就消失
 /dev/random      # 随机数生成器
