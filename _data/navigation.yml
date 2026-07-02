@@ -27,5 +27,7 @@ sidebar-categories:
     url: /categories/Qt/
   - title: "Lua"
     url: /categories/Lua/
+  - title: "Tooling"
+    url: /categories/tooling/
   - title: "Other"
     url: /categories/other/
