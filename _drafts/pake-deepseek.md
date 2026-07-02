@@ -109,7 +109,6 @@ pake https://chat.deepseek.com \
 
 | 选项 | 作用 |
 |------|------|
-| `--always-on-top` | 窗口始终在最前 |
 | `--inject style.css` | 注入自定义 CSS 或 JS，修改网页外观 |
 | `--proxy-url http://127.0.0.1:7890` | 走代理 |
 | `--debug` | 开启开发者工具，右键能调出审查元素 |
