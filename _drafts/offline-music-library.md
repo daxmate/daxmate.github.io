@@ -35,7 +35,7 @@ iOS 上开源离线播放器的选择不多，最后选了 [Cosmos Music Player]
 
 现在的歌都被大平台垄断了，想下载没那么容易。yt-dlp 能从 YouTube 下，但速度慢。国内的网站要么不好下，要么只能下 30 秒试听。
 
-后来在 GitHub 上找到了一个叫 [CocoDownloader](https://github.com/nickliqian/coco_downloader) 的开源项目。不是全部都能下，但日常够用。
+后来在 GitHub 上找到了一个叫 [CocoDownloader](https://github.com/markcxx/coco-downloader) 的开源项目。不是全部都能下，但日常够用。
 
 最开始想用 pyinstaller 打包，但项目没有同步网页版和桌面版的数据，用起来不太顺手，而且 pyinstaller 打出来的包体积太大了。后来想起刚写完的 Pake——把它打包成了本地 App，体验出奇地好。顺手在项目的 issue 里分享了操作方法，也算回馈了社区。
 
