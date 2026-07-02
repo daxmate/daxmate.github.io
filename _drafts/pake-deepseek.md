@@ -71,7 +71,7 @@ pake https://chat.deepseek.com --name DeepSeek --hide-title-bar
 
 Pake 的 GitHub Release 页面上已经有一堆预打包好的 App——ChatGPT、Claude、YouTube、YouTube Music、Twitter/X……可以直接下载用。
 
-也可以自己打包任意网页。比如把 Notion 日历打包成独立 App，把公司内部看板打包成桌面应用——只要是个 URL 就能打包。
+也可以自己打包任意网页。比如把常用的在线工具、内部看板打包成桌面应用——只要是个 URL 就能打包。
 
 ## 小结
 
