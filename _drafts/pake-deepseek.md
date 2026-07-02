@@ -67,6 +67,55 @@ pake https://chat.deepseek.com --name DeepSeek --hide-title-bar
 3. **干净的界面。** 没有书签栏、扩展图标、地址栏——真正沉浸式的聊天窗口
 4. **内存开销低。** 因为是 WebView 而不是 Chromium，内存占用只有几十 MB
 
+## 几个好用的选项
+
+上面的 `--name` 和 `--hide-title-bar` 只是冰山一角。Pake 支持的选项不少，挑几个常用的说：
+
+```zsh
+pake https://chat.deepseek.com \
+  --name DeepSeek \
+  --width 1200 \
+  --height 800 \
+  --hide-title-bar \
+  --always-on-top \
+  --install
+```
+
+### 窗口控制
+
+| 选项 | 作用 |
+|------|------|
+| `--width 1200` | 窗口宽度（默认 1200） |
+| `--height 800` | 窗口高度（默认 780） |
+| `--fullscreen` | 启动时全屏 |
+| `--always-on-top` | 窗口置顶 |
+
+### 打包方式
+
+| 选项 | 作用 |
+|------|------|
+| `--install` | 直接安装到 /Applications，省去拖拽那一步 |
+| `--multi-arch` | 同时打包 Intel 和 Apple Silicon 版本 |
+
+### 外观
+
+| 选项 | 作用 |
+|------|------|
+| `--icon ./logo.png` | 自定义图标（不传就用网站自己的 favicon） |
+| `--zoom 110` | 缩放比例（百分比），有些网页默认太小可以调大 |
+| `--hide-title-bar` | 隐藏标题栏，沉浸式（仅 macOS） |
+
+### 其他
+
+| 选项 | 作用 |
+|------|------|
+| `--always-on-top` | 窗口始终在最前 |
+| `--inject style.css` | 注入自定义 CSS 或 JS，修改网页外观 |
+| `--proxy-url http://127.0.0.1:7890` | 走代理 |
+| `--debug` | 开启开发者工具，右键能调出审查元素 |
+
+我日常用就加 `--install` 和 `--hide-title-bar` 两个，其他的按需加。
+
 ## 不止 DeepSeek
 
 Pake 的 GitHub Release 页面上已经有一堆预打包好的 App——ChatGPT、Claude、YouTube、YouTube Music、Twitter/X……可以直接下载用。
