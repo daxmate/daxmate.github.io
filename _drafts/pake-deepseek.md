@@ -75,7 +75,7 @@ pake https://chat.deepseek.com --name DeepSeek --hide-title-bar
 pake https://chat.deepseek.com \
   --name DeepSeek \
   --width 1200 \
-  --height 800 \
+  --height 900 \
   --hide-title-bar \
   --always-on-top \
   --install
