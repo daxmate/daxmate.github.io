@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "把 DeepSeek 网页打包成桌面 App——Pake 真好用"
-date:   2026-06-30 12:55:00 +0800
+date:   2026-07-02 18:09:00 +0800
 categories:
   - Tooling
 tags:
