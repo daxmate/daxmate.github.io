@@ -85,8 +85,8 @@ pake https://chat.deepseek.com \
 
 | 选项 | 作用 |
 |------|------|
-| `--width 1200` | 窗口宽度（默认 1200） |
-| `--height 800` | 窗口高度（默认 780） |
+| `--width 1200` | 窗口宽度 |
+| `--height 780` | 窗口高度 |
 | `--fullscreen` | 启动时全屏 |
 | `--always-on-top` | 窗口置顶 |
 
