@@ -6,7 +6,7 @@ author_profile: false
 entries_layout: list
 ---
 
-{% assign cat_posts = site.categories["other"] %}
+{% assign cat_posts = site.categories["Other"] %}
 {% if cat_posts.size > 0 %}
   {% for post in cat_posts %}
     {% include archive-single.html %}
