@@ -3,7 +3,7 @@ layout: single
 title:  "搭建一个属于自己的离线音乐库"
 date:   2026-07-02 14:30:00 +0800
 categories:
-  - Other
+  - other
 tags:
   - 音乐
   - 离线
