@@ -105,6 +105,41 @@ pake https://chat.deepseek.com \
 | `--zoom 110` | 缩放比例（百分比），有些网页默认太小可以调大 |
 | `--hide-title-bar` | 隐藏标题栏，沉浸式（仅 macOS） |
 
+### `--inject`：注入自定义 JS 或 CSS
+
+有些网页的功能在 App 里不太好用——比如 DeepSeek 的导出按钮在 Pake 里点不了。因为 Pake 用 WebView 渲染，浏览器扩展（比如油猴脚本）不生效，页面本身的一些交互行为也可能受限。
+
+`--inject` 选项可以注入自定义 CSS 或 JS 文件，绕过这些限制。
+
+注入 JS 脚本（比如强行显示隐藏的按钮、修复点击事件）：
+
+```zsh
+pake https://chat.deepseek.com \
+  --name DeepSeek \
+  --inject inject.js
+```
+
+注入 CSS 样式（调整页面布局、隐藏多余元素）：
+
+```zsh
+pake https://chat.deepseek.com \
+  --name DeepSeek \
+  --inject style.css
+```
+
+![注入前后对比，DeepSeek 导出按钮问题]({{ 'assets/images/deepseek-inject.png' | relative_url }})
+
+具体写什么 JS/CSS 取决于你要解决的问题。比如想让某个隐藏的按钮重新可用，可以在 `inject.js` 里写类似这样的代码：
+
+```js
+// 移除禁止复制的限制
+document.addEventListener('copy', (e) => e.stopImmediatePropagation(), true);
+// 显示隐藏的导出按钮
+document.querySelector('.export-btn')?.classList.remove('hidden');
+```
+
+`--inject` 支持传多个文件，每个文件处理一类问题。分文件写比一个文件堆所有逻辑好维护。
+
 ### 其他
 
 | 选项 | 作用 |
