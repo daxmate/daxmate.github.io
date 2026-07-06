@@ -297,8 +297,6 @@ cd ~ && trash perm-test
 
 ---
 
-下一篇聊文件搜索——`find`、`locate`、`mdfind`，文件藏在哪都能翻出来。
-
 ---
 
 > [← 查看系列目录]({% link _pages/series-command-line.md %})
