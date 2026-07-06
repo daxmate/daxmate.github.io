@@ -107,9 +107,9 @@ pake https://chat.deepseek.com \
 
 ### `--inject`：注入自定义 JS 或 CSS
 
-有些网页的功能在 App 里不太好用——比如 DeepSeek 的导出按钮在 Pake 里点不了。因为 Pake 用 WebView 渲染，浏览器扩展（比如油猴脚本）不生效，页面本身的一些交互行为也可能受限。
+有些网页的功能在 App 里不太好用——比如 DeepSeek 的对话内容无法导出，全文复制要从上往下拉等。
 
-`--inject` 选项可以注入自定义 CSS 或 JS 文件，绕过这些限制。
+`--inject` 选项可以注入自定义 CSS 或 JS 文件，来改变默认的样式或者页面的行为。
 
 注入 JS 脚本（比如强行显示隐藏的按钮、修复点击事件）：
 
@@ -127,15 +127,119 @@ pake https://chat.deepseek.com \
   --inject style.css
 ```
 
-![注入前后对比，DeepSeek 导出按钮问题]({{ 'assets/images/deepseek-inject.png' | relative_url }})
+![DeepSeek注入导出和复制按钮]({{ 'assets/images/deepseek-inject.png' | relative_url }})
 
-具体写什么 JS/CSS 取决于你要解决的问题。比如想让某个隐藏的按钮重新可用，可以在 `inject.js` 里写类似这样的代码：
+具体的JS实现代码需要自己写，下面是我让AI帮我写的导出和复制功能的代码：
 
 ```js
-// 移除禁止复制的限制
-document.addEventListener('copy', (e) => e.stopImmediatePropagation(), true);
-// 显示隐藏的导出按钮
-document.querySelector('.export-btn')?.classList.remove('hidden');
+// ========== 添加功能按钮 ==========
+function addButtons() {
+  const container = document.createElement('div');
+  container.id = 'pake-tools';
+  container.innerHTML = `
+    <button id="pake-export">📄 导出</button>
+    <button id="pake-copy">📋 复制全部</button>
+  `;
+  
+  // 样式
+  const style = document.createElement('style');
+  style.textContent = `
+    #pake-tools {
+      position: fixed;
+      top: 12px;
+      right: 80px;
+      z-index: 2147483647;
+      display: flex;
+      gap: 8px;
+    }
+    #pake-tools button {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #4f46e5;
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    #pake-tools button:hover {
+      opacity: 0.9;
+    }
+  `;
+  
+  document.head.appendChild(style);
+  document.body.appendChild(container);
+  
+  // 绑定事件
+  document.getElementById('pake-export').onclick = exportConversation;
+  document.getElementById('pake-copy').onclick = copyAll;
+}
+
+// ========== 导出功能 ==========
+async function exportConversation() {
+  const messages = extractMessages();
+  const text = formatAsText(messages);
+  
+  // 创建下载
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `deepseek-${new Date().toISOString().slice(0,10)}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ========== 复制全部 ==========
+async function copyAll() {
+  const messages = extractMessages();
+  const text = formatAsText(messages);
+  
+  await navigator.clipboard.writeText(text);
+  
+  // 提示
+  const tip = document.createElement('div');
+  tip.textContent = '✓ 已复制';
+  tip.style.cssText = 'position:fixed;top:56px;right:80px;background:#10b981;color:#fff;padding:6px 14px;border-radius:6px;z-index:2147483647;font-size:13px;';
+  document.body.appendChild(tip);
+  setTimeout(() => tip.remove(), 1500);
+}
+
+// ========== 提取 DeepSeek 对话 ==========
+function extractMessages() {
+  // DeepSeek 实际选择器（需根据页面调整）
+  const selectors = [
+    '[data-testid="chat-message"]',
+    '.ds-chat-message',
+    '.message-item',
+    '[class*="message"]'
+  ];
+  
+  let elements = [];
+  for (const sel of selectors) {
+    elements = document.querySelectorAll(sel);
+    if (elements.length > 0) break;
+  }
+  
+  return Array.from(elements).map(el => ({
+    role: el.classList.contains('user') || el.closest('[data-role="user"]') ? 'user' : 'assistant',
+    content: el.innerText.trim(),
+    html: el.innerHTML
+  }));
+}
+
+function formatAsText(messages) {
+  return messages.map(m => 
+    `**${m.role === 'user' ? '👤 用户' : '🤖 DeepSeek'}**\n\n${m.content}`
+  ).join('\n\n---\n\n');
+}
+
+// ========== 初始化 ==========
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', addButtons);
+} else {
+  addButtons();
+}
 ```
 
 `--inject` 支持传多个文件，每个文件处理一类问题。分文件写比一个文件堆所有逻辑好维护。
@@ -144,7 +248,6 @@ document.querySelector('.export-btn')?.classList.remove('hidden');
 
 | 选项 | 作用 |
 |------|------|
-| `--inject style.css` | 注入自定义 CSS 或 JS，修改网页外观 |
 | `--proxy-url http://127.0.0.1:7890` | 走代理 |
 | `--debug` | 开启开发者工具，右键能调出审查元素 |
 
