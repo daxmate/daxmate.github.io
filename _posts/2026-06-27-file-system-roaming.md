@@ -298,4 +298,8 @@ cd Doc[Tab]
 
 ---
 
+不过刚才 `ls /` 的时候看到了一堆名字奇怪的目录——`bin`、`etc`、`var`……这都是干嘛的？下一篇来说这个。
+
+---
+
 > [← 查看系列目录]({% link _pages/series-command-line.md %})
