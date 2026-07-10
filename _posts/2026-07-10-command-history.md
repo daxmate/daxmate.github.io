@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：历史命令"
-date:   2026-07-10 12:00:00 +0800
+date:   2026-07-10 11:00:00 +0800
 categories:
   - Command Line
 tags:
