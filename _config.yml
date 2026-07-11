@@ -218,6 +218,7 @@ sass:
 # Outputting
 permalink: /:categories/:title/
 timezone: Asia/Shanghai
+future: true
 
 
 # Pagination with jekyll-paginate
