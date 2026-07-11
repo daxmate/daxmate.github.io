@@ -24,7 +24,7 @@
 | 13 | 历史命令 | 07-10 |
 | 14 | 终端文本编辑——nano | 07-11 |
 | 15 | 文件描述符深入 | 07-11 |
-| 16 | Unix/POSIX/GNU/BSD/Linux | 07-07 |
+| 16 | Unix/POSIX/GNU/BSD/Linux | 07-11 |
 
 ## 已有草稿（系列篇 22 篇）
 
@@ -52,7 +52,7 @@
 | SSH / 远程连接 | 可直接整理发布 |
 | xxd — 二进制查看 | 可直接整理发布 |
 | Shell 脚本 | 可直接整理发布 |
-| ~~Unix/POSIX/GNU/BSD/Linux~~ | ✅ 已发布 07-07 |
+| ~~Unix/POSIX/GNU/BSD/Linux~~ | ✅ 已发布 07-11 |
 
 ## 合计现有体量
 
