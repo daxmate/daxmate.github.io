@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：文件描述符——0、1、2 背后是什么"
-date:   2026-07-11 16:00:00 +0800
+date:   2026-07-11 15:30:00 +0800
 categories:
   - Command Line
 tags:
