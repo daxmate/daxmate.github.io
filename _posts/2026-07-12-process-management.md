@@ -180,9 +180,24 @@ pkill -f "python server.py"
 
 用到 `pkill` 的时候格外小心——名字太短可能杀掉意外的东西。比如 `pkill java` 只杀 Java 进程，但 `pkill j` 就可能误伤很多名字带 j 的进程。
 
----
+### 按名字全杀：`killall`
 
-## 后台任务
+macOS 上还有一个 `killall`，按**进程名**杀掉所有同名进程。名字不匹配就不杀，不会误伤：
+
+```zsh
+killall -9 Finder
+killall -TERM Safari
+```
+
+`killall` 在 macOS 上一个实用场景是重启 Finder：
+
+```zsh
+killall Finder
+```
+
+Finder 收到 SIGTERM 后自动重启，适合改了 Finder 偏好设置需要刷新的时候。
+
+> Linux 也有 `killall`，行为类似但来自不同的包（`psmisc`/`procps-ng`）。macOS 和 Linux 的 `killall` 都可以按名字批量杀进程，注意不是系统里的 `kill` 加 `all` 选项——是另一个命令。
 
 我们已经在一篇单独的文章里详细聊过前后台任务管理（`&`、`bg`、`fg`、`jobs`、`nohup`、`disown`），这里简单提一下和进程管理相关的点：
 
@@ -236,6 +251,7 @@ kill -9 上一步显示的 PID
 | `kill PID` | 发 SIGTERM 让进程退出 |
 | `kill -9 PID` | 发 SIGKILL 强制杀死 |
 | `pkill 名字` | 按名字关（注意误杀！） |
+| `killall 名字` | 按进程名全杀（精确匹配） |
 | `kill -信号 PID` | 发任意信号 |
 
 几个要点记住：
