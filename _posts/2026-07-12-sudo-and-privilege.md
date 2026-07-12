@@ -166,7 +166,20 @@ dax     ALL=(ALL) NOPASSWD: /usr/bin/apt
 
 `sudo` 是 1980 年在纽约州立大学布法罗分校（SUNY Buffalo）诞生的，由 Bob Coggeshall 和 Cliff Spencer 编写。1994 年 Todd C. Miller 重写了整个代码，后来成为 OpenBSD 的标准组件，再后来被几乎所有 Unix 系操作系统采用。
 
-有趣的是，最初 `sudo` 的意思是 "superuser do"，但也有人开玩笑说它是 "sudo make me a sandwich"。
+有趣的是，最初 `sudo` 的意思是 "superuser do"。
+
+---
+
+### 彩蛋：三明治梗
+
+程序员圈子里流传着一个来自 xkcd 漫画 #149 的经典对话：
+
+> — Make me a sandwich.
+> — What? Make it yourself.
+> — sudo make me a sandwich.
+> — Okay.
+
+当然，现实里敲 `sudo make me a sandwich` 只会提示命令找不到——`sudo` 并不能凭空变出三明治。
 
 ---
 
