@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：软链接和硬链接——文件的两个分身"
-date:   2026-07-09 13:00:00 +0800
+date:   2026-07-12 13:00:00 +0800
 categories:
   - Command Line
 tags:
@@ -24,7 +24,7 @@ tags:
 
 在理解链接之前，得先知道文件系统是怎么存文件的。简化一下：
 
-```
+```text
 文件名 → inode（索引节点） → 磁盘上的数据
 ```
 
@@ -38,7 +38,7 @@ tags:
 ls -i readme.md
 ```
 
-```
+```text
 12345678 readme.md
 ```
 
@@ -56,7 +56,7 @@ ln original.txt hardlink.txt
 ls -i original.txt hardlink.txt
 ```
 
-```
+```text
 12345678 original.txt
 12345678 hardlink.txt
 ```
@@ -70,7 +70,7 @@ echo "world" >> hardlink.txt
 cat original.txt
 ```
 
-```
+```text
 hello
 world
 ```
@@ -84,7 +84,7 @@ rm original.txt
 cat hardlink.txt
 ```
 
-```
+```text
 hello
 world
 ```
@@ -111,7 +111,7 @@ ln -s original.txt softlink.txt
 ls -li
 ```
 
-```
+```text
 12345678 -rw-r--r--  1 dax  staff  6 Jul 10 12:00 original.txt
 12345679 lrwxr-xr-x  1 dax  staff  11 Jul 10 12:00 softlink.txt -> original.txt
 ```
@@ -126,7 +126,7 @@ ls -li
 cat softlink.txt
 ```
 
-```
+```text
 hello
 ```
 
@@ -137,7 +137,7 @@ rm original.txt
 cat softlink.txt
 ```
 
-```
+```text
 cat: softlink.txt: No such file or directory
 ```
 
