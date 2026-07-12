@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：环境变量"
-date:   2026-07-01 14:00:00 +0800
+date:   2026-07-12 10:00:00 +0800
 categories:
   - Command Line
 tags:
@@ -12,9 +12,7 @@ tags:
   - zshrc
 ---
 
-上一篇我们把 Shell 找命令的机制搞清楚了——alias → builtin → hash → PATH。
-
-现在来具体看看 PATH 只是环境变量之一，还有哪些重要的，以及怎么管理它们。
+我们经常和 `PATH` 打交道——比如装完软件报 command not found，十有八九是 PATH 的问题。但环境变量不止 PATH 一个，还有哪些重要的，以及怎么管理它们，这篇就来聊聊。
 
 ---
 
@@ -62,7 +60,7 @@ env | grep HOME
 
 ## 最重要的环境变量：`PATH` （续）
 
-`PATH` 决定了**当你敲一个命令时，Shell 去哪找对应的程序**。上一篇已经详细讲了它的搜索机制，这里只看怎么管理它。
+`PATH` 决定了**当我们敲一个命令时，Shell 去哪找对应的程序**。它的搜索机制就是按冒号分隔的目录列表逐个查找。这里只看怎么管理它。
 
 ```zsh
 echo $PATH
@@ -72,7 +70,7 @@ echo $PATH
 /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 ```
 
-这是一串用 `:` 分隔的目录路径。当你敲 `git` 的时候，Shell 按顺序在这串目录里找 `git` 这个可执行文件。第一个找到的就被执行。
+这是一串用 `:` 分隔的目录路径。当我们敲 `git` 的时候，Shell 按顺序在这串目录里找 `git` 这个可执行文件。第一个找到的就被执行。
 
 **`which` 查的就是这个**：
 
@@ -88,7 +86,7 @@ which git
 
 ### 为什么装了软件但命令找不到
 
-一个常见的情况：你用 Homebrew 装了某个工具，但 `which` 找不到它。
+一个常见的情况：用 Homebrew 装了某个工具，但 `which` 找不到它。
 
 原因是：Homebrew 安装在 `/opt/homebrew/bin/`（Apple Silicon）或 `/usr/local/bin/`（Intel），但这个路径没在 `PATH` 里。
 
@@ -104,7 +102,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 `$PATH` 放在最后，意思是：先在 `/opt/homebrew/bin` 里找，找不到再去原来的目录找。
 
-`export` 的意思是把这个变量**传给子进程**——不加 `export` 的话，只有当前 shell 能看到，你启动的其他程序看不到。
+`export` 的意思是把这个变量**传给子进程**——不加 `export` 的话，只有当前 shell 能看到，其他程序拿不到。
 
 ---
 
@@ -122,6 +120,43 @@ hello
 ```
 
 关掉终端重开，`MY_VAR` 就没了。
+
+### Shell 变量 vs 环境变量
+
+有一个重要的区别要搞清楚：
+
+```zsh
+MY_VAR="hello"          # 只是 shell 变量，子进程看不到
+export MY_VAR="hello"   # 环境变量，子进程也能看到
+```
+
+试一下就知道了：
+
+```zsh
+# 不加 export
+NAME="dax"
+echo $NAME             # dax —— 当前 shell 能用
+zsh -c 'echo $NAME'    # （空）—— 子 shell 看不到
+
+# 加 export
+export NAME="dax"
+zsh -c 'echo $NAME'    # dax —— 子 shell 也看到了
+```
+
+**不 export 的变量只有当前 shell 自己知道，启动了其他程序就传不过去。** 这就是 shell 变量和环境变量的根本区别。大部分时候我们直接用 `export` 更省事，但知道这个区别有助于理解为什么有时候变量会"不见了"。
+
+### 删除变量
+
+用 `unset` 可以删掉已经设置的变量：
+
+```zsh
+export MY_VAR="hello"
+echo $MY_VAR     # hello
+unset MY_VAR
+echo $MY_VAR     # （空，变量已经没了）
+```
+
+`unset` 对 shell 变量和环境变量都有效，删掉之后这个变量就彻底不存在了。
 
 ### 永久设置：写到配置文件
 
@@ -148,7 +183,7 @@ source ~/.zshrc   # 让刚才的修改立即生效，不用重开终端
 | `LANG` | 语言和编码 | `zh_CN.UTF-8` |
 | `EDITOR` | 默认文本编辑器 | `vim` 或 `nano` |
 
-`EDITOR` 是个好例子——`git commit` 不指定编辑器的时候，它会弹哪个编辑器？就看你 `EDITOR` 设的是什么。
+`EDITOR` 是个好例子——`git commit` 不指定编辑器的时候，它会弹哪个编辑器？就看 `EDITOR` 设的是什么。
 
 ---
 
@@ -183,7 +218,7 @@ zsh 有几个启动文件，作用不同：
 | `~/.zprofile` | 登录时执行一次 | 全局环境变量、SSH key 加载 |
 | `~/.zshenv` | 任何 zsh 启动都执行 | 极少数情况用 |
 
-日常最常用的是 `~/.zshrc`。除非你明确知道某个变量需要「登录时跑一次就好」，否则放 `~/.zshrc` 不会错。
+日常最常用的是 `~/.zshrc`。除非明确知道某个变量需要「登录时跑一次就好」，否则放 `~/.zshrc` 不会错。
 
 ---
 
@@ -205,6 +240,16 @@ env | head -n 10
 
 # 让子进程也能看到
 zsh -c 'echo $MY_TEST'   # 新开一个 zsh，看能不能读到 MY_TEST
+
+# 不 export 会怎样
+NAME="dax"              # 只是 shell 变量
+zsh -c 'echo $NAME'      # 看不到
+
+# 删除变量
+export TMP_VAR="temp"
+echo $TMP_VAR
+unset TMP_VAR
+echo $TMP_VAR            # 已经没了
 ```
 
 ---
@@ -217,6 +262,9 @@ zsh -c 'echo $MY_TEST'   # 新开一个 zsh，看能不能读到 MY_TEST
 | 查看全部 | `env` |
 | 临时设置 | `export 变量=值` |
 | 永久设置 | 写入 `~/.zshrc` 然后 `source ~/.zshrc` |
+| 删除变量 | `unset 变量名` |
+| Shell 变量 | `变量=值`（不带 export） |
+| 环境变量 | `export 变量=值` |
 | PATH 追加 | `export PATH="/新路径:$PATH"` |
 
 **核心认知**：`PATH` 是 Shell 找命令的地图。装了软件找不到命令，十有八九是 `PATH` 里没它。
