@@ -32,24 +32,24 @@ author_profile: false
 23. [压缩与归档——`tar`、`gzip`、`zip`]({% post_url 2026-07-12-archive-and-compression %})
 24. [文件搜索——`find`、`locate`、`mdfind`]({% post_url 2026-07-12-file-search %})
 25. [sort、uniq、cut、tr——文本处理四件套]({% post_url 2026-07-12-sort-uniq-cut-tr %})
+26. [前后台任务——让程序在背后跑]({% post_url 2026-07-12-job-control %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-26. grep 入门
-27. 扩展搜索 — `grep -E` 与正则进阶
-28. 正则表达式专篇
-29. sed 入门
-30. awk 入门
-31. 前后台任务
-32. 进程管理 — `ps`、`top`、`kill`、后台运行
-33. 系统监控
-34. sudo
-35. 定时任务
-36. 网络工具 — `curl`、`ping`、`ssh`
-37. SSH / 远程连接
-38. xxd — 二进制查看
-39. 写一个简单的脚本
-40. Unix 哲学
-41. 命令行选项的简史
+27. 进程管理 — `ps`、`top`、`kill`
+28. 系统监控
+29. sudo
+30. 定时任务
+31. 网络工具 — `curl`、`ping`、`ssh`
+32. SSH / 远程连接
+33. xxd — 二进制查看
+34. 写一个简单的脚本
+35. Unix 哲学
+36. 命令行选项的简史
+37. grep 入门
+38. 扩展搜索 — `grep -E` 与正则进阶
+39. 正则表达式专篇
+40. sed 入门
+41. awk 入门
