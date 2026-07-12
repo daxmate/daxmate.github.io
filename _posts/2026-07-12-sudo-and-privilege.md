@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：sudo——借我一双管理员的手"
-date:   2026-07-12 13:00:00 +0800
+date:   2026-07-12 16:48:00 +0800
 categories:
   - Command Line
 tags:

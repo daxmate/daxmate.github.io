@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：前后台任务——让程序在背后跑"
-date:   2026-07-12 13:00:00 +0800
+date:   2026-07-12 16:39:00 +0800
 categories:
   - Command Line
 tags:
