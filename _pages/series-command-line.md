@@ -41,7 +41,6 @@ author_profile: false
 26. sed 入门
 27. Unix 哲学
 28. 命令行选项的简史
-29. 输出与格式化 — `echo` 与 `printf` 进阶
-30. 写一个简单的脚本
-31. 进程管理 — `ps`、`top`、`kill`、后台运行
-32. 网络工具 — `curl`、`ping`、`ssh`
+29. 写一个简单的脚本
+30. 进程管理 — `ps`、`top`、`kill`、后台运行
+31. 网络工具 — `curl`、`ping`、`ssh`
