@@ -119,10 +119,20 @@
 - 一个简单的 C 编译例子
 - 不深入，够用就行
 
-### 8. Git 基础（📂 单开类目）
+### 8. Git 入门（🧩 系列内 + 后续独立系列）
 
-**独立计划：** Git 系列，不混入 Command Line。
-首批覆盖：`init` `add` `commit` `push` `pull` `log` `status` `diff`。按需扩展分支、合并、冲突解决。
+**双层计划：** 先在 Command Line 系列里放一篇 Git 入门，覆盖最常用的几个操作，让读者能用起来。后续再独立开一个 Git 系列深入讲。
+
+**本篇（系列内）覆盖：**
+- 为什么需要版本控制
+- `init` `add` `commit` `log` `status` `diff`
+- `push`/`pull` 远程仓库
+- 够用即可，不提分支合并
+
+**后续独立系列：**
+- 分支与合并、冲突解决
+- rebase、stash、reset、revert
+- 团队协作工作流
 
 ### 💡 关于 "Shell 脚本" 草稿
 
