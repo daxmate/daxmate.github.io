@@ -29,13 +29,13 @@ author_profile: false
 20. [alias 与 Shell 函数——给命令起外号]({% post_url 2026-07-12-alias-and-functions %})
 21. [字符编码——为什么中文会乱码]({% post_url 2026-07-12-character-encoding %})
 22. [那些Ctrl组合键从哪里来]({% post_url 2026-07-12-terminal-control-characters %})
+23. [压缩与归档——`tar`、`gzip`、`zip`]({% post_url 2026-07-12-archive-and-compression %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-22. 文件搜索 — `find`、`locate`、`mdfind`
-23. 压缩与归档 — `tar`、`gzip`、`zip`
+23. 文件搜索 — `find`、`locate`、`mdfind`
 24. grep 入门
 25. 扩展搜索 — `grep -E` 与正则进阶
 26. 正则表达式专篇

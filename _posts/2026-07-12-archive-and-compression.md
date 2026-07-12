@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：压缩与归档"
-date:   2026-07-01 14:00:00 +0800
+date:   2026-07-12 15:47:00 +0800
 categories:
   - Command Line
 tags:
@@ -13,14 +13,14 @@ tags:
   - 归档
 ---
 
-有没有遇到过这种情况——想发几份文件给别人，一个一个发太麻烦，打包成一个又太大。或者从网上下了一个 `.tar.gz` 文件，不知道怎么解开。
+有没有遇到过这种情况——想发几份文件给别人，一个一个发太麻烦，打包成一个又太大发不动。或者从网上下了一个 `.tar.gz` 文件，不知道怎么解开。
 
-这就是压缩与归档要解决的问题。两个概念先分清楚：
+压缩与归档就是干这个的。两个概念先分清：
 
-- **归档**：把一堆文件捆成一个，大小不变，方便传输。比如 `tar`。
+- **归档**：把一堆文件捆成一个，体积不变，方便传输。比如 `tar`。
 - **压缩**：把文件变小，节省空间。比如 `gzip`。
 
-日常操作通常是两个一起用：先归档成一个大文件，再压缩——最后得到一个 `.tar.gz`。
+日常往往两个一起用：先归档成一个文件，再压缩——最后得到一个 `.tar.gz`。
 
 ---
 
@@ -42,7 +42,9 @@ echo "Deep file" > subdir/deep.txt
 
 ## 最常用的组合：`tar`
 
-`tar` 的名字来自 **Tape Archive**——磁带归档。它的本职是把多个文件和目录打成一个包（`tar` 文件），不压缩。后来添加了压缩功能，所以现在一个命令就能搞定归档 + 压缩。
+`tar` 的名字来自 **Tape Archive**——磁带归档。这玩意儿的历史可以追溯到 1970 年代的 Unix Version 7。那时候的存储介质是磁带，你不可能把几百个小文件一个个往磁带上写，所以先把它们捆成一个再写上去。后来压缩功能加上去之后，`tar` 本身就变成了一个能打包还能压缩的瑞士军刀。
+
+不过话说回来，这些早期 Unix 命令的选项设计比较随性——`-czf`、`-xzf` 这种组合，不常用的话根本记不住。所以这篇只是带你认识一下，混个脸熟就行。用的时候回来查一下，完全正常。
 
 ### 打包 + 压缩
 
@@ -50,7 +52,7 @@ echo "Deep file" > subdir/deep.txt
 tar -czf myarchive.tar.gz file1.txt file2.txt file3.txt subdir/
 ```
 
-四个选项拆开看：
+四个核心选项拆开看：
 
 | 选项 | 含义 |
 |------|------|
@@ -65,7 +67,7 @@ tar -czf myarchive.tar.gz file1.txt file2.txt file3.txt subdir/
 tar -czvf myarchive.tar.gz file1.txt file2.txt file3.txt subdir/
 ```
 
-```
+```text
 a file1.txt
 a file2.txt
 a file3.txt
@@ -91,7 +93,7 @@ tar -xzf myarchive.tar.gz
 tar -xzf myarchive.tar.gz -C /path/to/dest/
 ```
 
-`-C` 指定目标目录，得先确保这个目录已经存在。
+`-C` 指定目标目录，得确保这个目录已经存在。
 
 ### 只看不拆：`-t`
 
@@ -101,7 +103,7 @@ tar -xzf myarchive.tar.gz -C /path/to/dest/
 tar -tzf myarchive.tar.gz
 ```
 
-```
+```text
 file1.txt
 file2.txt
 file3.txt
@@ -150,10 +152,10 @@ gunzip file1.txt.gz
 
 又变回了 `file1.txt`，`.gz` 文件消失。
 
-不删原文件的压缩：
+保留原文件：
 
 ```zsh
-gzip -k file1.txt   # 保留原文件
+gzip -k file1.txt   # -k 就是 keep
 ```
 
 `gzip` 只处理单个文件。要打包多个文件还得用 `tar`。
@@ -162,7 +164,7 @@ gzip -k file1.txt   # 保留原文件
 
 ## 跨平台通用：`zip` / `unzip`
 
-`tar.gz` 是 Unix 世界的老大，但如果要发给 Windows 用户，`zip` 更友好——Windows 系统自带支持，不用装额外软件。
+`tar.gz` 在 Unix 世界是老大，但要发给 Windows 用户，`zip` 更省事——Windows 自带支持，不用装额外软件。
 
 ```zsh
 zip myarchive.zip file1.txt file2.txt file3.txt
@@ -192,20 +194,34 @@ unzip myarchive.zip -d /path/to/dest/
 unzip -l myarchive.zip
 ```
 
-日常简单记：**自己用或发给 Linux/Mac 用户用 `tar.gz`，发给 Windows 用户用 `zip`**。
+### ZIP 压缩是怎么做到的？
+
+ZIP 背后的故事其实挺有意思。80 年代末有个人叫 Phil Katz，他写了个 PKARC 去兼容当时流行的 ARC 压缩格式。结果被 ARC 的开发者告了，说他侵犯版权。
+
+Katz 一怒之下搞了个自己的格式——**ZIP**，而且把规格完全公开，任何人都可以免费使用。格式公开之后，各种操作系统都开始支持 ZIP，很快就成了跨平台压缩的标配。
+
+ZIP 用的压缩算法叫 **DEFLATE**，核心是两个步骤：
+
+1. **LZ77——找重复**。扫描文件，标记出重复出现的数据段。比如一段文本里"compression"这个词出现了三次，第二次开始就不存完整内容了，而是记"往回找 N 个字节，从这里复制 X 个字节"。就像老师在批作业时发现同一个错误出现多次，第二次开始就写"同上"。
+
+2. **Huffman 编码——高频短码**。统计每个字节出现的频率，出现越多的用越短的编码。这不新鲜——摩尔斯电码就这么干的：最常用的字母 E 是 `.`，不常用的 Q 是 `--.-`。
+
+这两步合在一起就是 DEFLATE——实际上 gzip 也用的同一个算法，只是文件格式不同。ZIP 的容器可以存多个文件，每个文件独立压缩；gzip 只能压单个流，所以常见的是先 tar 归档再 gzip 压缩。
+
+大致记住就好：**自己用或发给 Linux/Mac 用户用 `tar.gz`，发给 Windows 用户或者需要自解压时用 `zip`**。
 
 ---
 
 ## 压缩率对比：`bzip2`
 
-除了 `gzip`，还有一种叫 `bzip2` 的压缩算法，压得更狠，但更慢。在 `tar` 里用 `-j` 代替 `-z`：
+除了 `gzip`，`bzip2` 压得更狠，但也更慢。在 `tar` 里用 `-j` 代替 `-z`：
 
 ```zsh
 tar -cjf myarchive.tar.bz2 file1.txt file2.txt
 tar -xjf myarchive.tar.bz2
 ```
 
-日常中小文件用 `gzip` 就够了。只有需要极致压缩的时候才考虑 `bzip2`（或者更现代的 `xz`，用 `-J`）。
+日常小文件用 `gzip` 就够了。要极致压缩才考虑 `bzip2`（或者更现代的 `xz`，用 `-J`）。
 
 ---
 
@@ -239,7 +255,7 @@ ls -lh file1.txt*
 gunzip file1.txt.gz
 ```
 
-按照这个顺序跑一遍，基本就搞清楚了。
+按这个顺序跑一遍，基本就搞清楚了。
 
 ---
 
@@ -251,12 +267,10 @@ gunzip file1.txt.gz
 | `tar -xzf` | 解压 tar.gz | `tar -xzf name.tar.gz` |
 | `tar -tzf` | 查看 tar.gz 内容 | `tar -tzf name.tar.gz` |
 | `gzip` / `gunzip` | 单文件压缩/解压 | `gzip file` → `gunzip file.gz` |
-| `zip -r` | 打包为 zip | `zip -r name.zip dir/` |
+| `zip -r` | 将文件夹打包为 zip | `zip -r name.zip dir/` |
 | `unzip` | 解压 zip | `unzip name.zip` |
 
-`tar -czf` 打包，`tar -xzf` 拆包——这两句用个十次八次就刻在肌肉里了。
-
-下一篇聊命令行的一个爽功能——历史记录。敲过的命令不用再敲一遍，`Ctrl+R` 一搜就出来。
+`tar -czf` 打包，`tar -xzf` 拆包——两句用个十次八次就刻在肌肉里了。
 
 ---
 
