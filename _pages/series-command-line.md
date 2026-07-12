@@ -31,25 +31,25 @@ author_profile: false
 22. [那些Ctrl组合键从哪里来]({% post_url 2026-07-12-terminal-control-characters %})
 23. [压缩与归档——`tar`、`gzip`、`zip`]({% post_url 2026-07-12-archive-and-compression %})
 24. [文件搜索——`find`、`locate`、`mdfind`]({% post_url 2026-07-12-file-search %})
+25. [sort、uniq、cut、tr——文本处理四件套]({% post_url 2026-07-12-sort-uniq-cut-tr %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-23. grep 入门
-24. 扩展搜索 — `grep -E` 与正则进阶
-25. 正则表达式专篇
-26. 文本处理 — `sort`、`uniq`、`cut`
-27. sed 入门
-28. awk 入门
-29. 前后台任务
-30. 进程管理 — `ps`、`top`、`kill`、后台运行
-31. 系统监控
-32. sudo
-33. 定时任务
-34. 网络工具 — `curl`、`ping`、`ssh`
-35. SSH / 远程连接
-36. xxd — 二进制查看
-37. 写一个简单的脚本
-38. Unix 哲学
-39. 命令行选项的简史
+26. grep 入门
+27. 扩展搜索 — `grep -E` 与正则进阶
+28. 正则表达式专篇
+29. sed 入门
+30. awk 入门
+31. 前后台任务
+32. 进程管理 — `ps`、`top`、`kill`、后台运行
+33. 系统监控
+34. sudo
+35. 定时任务
+36. 网络工具 — `curl`、`ping`、`ssh`
+37. SSH / 远程连接
+38. xxd — 二进制查看
+39. 写一个简单的脚本
+40. Unix 哲学
+41. 命令行选项的简史
