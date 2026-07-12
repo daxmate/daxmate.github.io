@@ -28,12 +28,12 @@ author_profile: false
 19. [Shell 是怎么找到命令的]({% post_url 2026-07-12-shell-how-find-commands %})
 20. [alias 与 Shell 函数——给命令起外号]({% post_url 2026-07-12-alias-and-functions %})
 21. [字符编码——为什么中文会乱码]({% post_url 2026-07-12-character-encoding %})
+22. [终端的秘密——那些 Ctrl 键从哪里来]({% post_url 2026-07-12-terminal-control-characters %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-21. 终端控制字符
 22. 文件搜索 — `find`、`locate`、`mdfind`
 23. 压缩与归档 — `tar`、`gzip`、`zip`
 24. grep 入门
