@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：Shell 是怎么找到命令的"
-date:   2026-07-07 10:00:00 +0800
+date:   2026-07-12 12:00:00 +0800
 categories:
   - Command Line
 tags:
@@ -243,7 +243,7 @@ Shell 找命令就三步：
 
 要么程序没装进 PATH 里的目录，要么 PATH 里没有包含那个目录。
 
-下一篇来聊环境变量——PATH 只是其中之一，还有 HOME、EDITOR 这些老朋友等着认识。
+环境变量已经聊过了——[环境变量]({% post_url 2026-07-12-environment-variables %})，PATH 只是其中之一，还有 HOME、EDITOR 这些老朋友等着认识。
 
 ---
 
