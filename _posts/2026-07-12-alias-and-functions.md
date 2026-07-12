@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：alias 和 Shell 函数——给命令起外号"
-date:   2026-07-09 13:00:00 +0800
+date:   2026-07-12 14:00:00 +0800
 categories:
   - Command Line
 tags:
@@ -41,15 +41,55 @@ alias
 command ls    # 同上，显式调用原生命令
 ```
 
+### 删除 alias：unalias
+
+加了 alias 之后想取消？用 `unalias`：
+
+```zsh
+unalias ll
+```
+
+查看所有 alias 时发现某个不想要了，直接 `unalias <名字>` 就行：
+
+```zsh
+unalias ll gs     # 一次删多个
+unalias -a         # 删除所有 alias（小心用）
+```
+
+### 单引号还是双引号？
+
+定义 alias 时引号的选择有讲究：
+
+```zsh
+alias foo="echo $HOME"   # 双引号——定义时 $HOME 就展开成路径了
+alias bar='echo $HOME'    # 单引号——每次敲 bar 时才展开 $HOME
+```
+
+绝大多数情况下用**单引号**更安全，因为我们不希望定义的时候变量就被求值。拿不准的时候就写单引号。
+
 ### 参数呢？
 
-alias 有一个局限：**不能接受参数**。如果你写：
+alias 有一个局限：**不能接受参数**。如果我们写：
 
 ```zsh
 alias mkcd='mkdir $1 && cd $1'
 ```
 
-然后敲 `mkcd mydir`，Shell 不会把 `mydir` 当成参数传进去——alias 只是把 `mkcd` 替换成 `mkdir $1 && cd $1`，而 `$1` 在这里并不是你后面敲的那个参数，它是 Shell 脚本语境里的东西。
+然后敲 `mkcd mydir`，Shell 会把命令展开成这样：
+
+```text
+mkdir $1 && cd $1 mydir
+```
+
+交互式 Shell 里 `$1` 是空的，实际执行的是：
+
+```text
+mkdir && cd mydir
+```
+
+`mkdir` 没给参数会报使用错误，而 `mydir` 被追加到了末尾而不是填入 `$1`——整个命令逻辑全乱了。
+
+**alias 只是纯文本替换**，我们跟在 alias 后面的参数会追加在替换结果的末尾，不会填充到 `$1`、`$2` 这些位置参数里。想要传参，得用函数。
 
 这就引出了 Shell 函数。
 
@@ -72,6 +112,8 @@ mkcd mydir
 
 函数可以接受多个参数，可以做判断，可以写循环——它就是一段轻量级的 Shell 脚本。
 
+> 也可能见到有人用 `function 名字 { ... }` 写函数定义，那是旧式 Bourne shell 的语法，zsh 和 bash 也支持。`名字() { ... }` 的写法最通用，POSIX 标准也认它。
+
 ### 实用函数示例
 
 ```zsh
@@ -92,6 +134,20 @@ cdvim() {
   cd "$(dirname "$1")" && vim "$(basename "$1")"
 }
 ```
+
+### 删除函数：unset -f
+
+和 alias 一样，函数也可以删：
+
+```zsh
+unset -f mkcd
+```
+
+```zsh
+unset -f mkcd extract    # 一次删多个
+```
+
+`-f` 表示操作的是函数（function），不加 `-f` 的话 `unset` 默认操作的是变量。
 
 ---
 
@@ -160,6 +216,10 @@ alias
 
 # 看看哪些 alias 已经设好了
 alias | grep git
+
+# 删掉刚才设的 alias 和函数
+unalias ll
+unset -f mkcd
 ```
 
 ---
