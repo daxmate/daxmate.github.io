@@ -9,3 +9,15 @@ $max-width: 1400px;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
+
+/* === Custom table styling === */
+article.page .entry-content table {
+  display: table;
+  width: auto;
+  margin: 0 auto 1em;
+  overflow-x: auto;
+}
+
+article.page .entry-content table.table-wide {
+  width: 100%;
+}

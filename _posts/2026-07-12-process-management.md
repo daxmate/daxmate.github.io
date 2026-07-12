@@ -56,6 +56,7 @@ ps aux
 | START | 启动时间 |
 | TIME | 累计 CPU 时间 |
 | COMMAND | 命令 |
+{: .table-wide}
 
 ### 进程的几种状态
 
