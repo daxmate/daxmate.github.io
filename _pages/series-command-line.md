@@ -25,12 +25,12 @@ author_profile: false
 16. [Unix、POSIX、GNU、BSD、Linux——这些名字到底在说什么]({% post_url 2026-07-11-unix-posix-gnu-bsd-linux %})
 17. [软链接和硬链接——文件的两个分身]({% post_url 2026-07-12-symlink-hardlink %})
 18. [环境变量]({% post_url 2026-07-12-environment-variables %})
+19. [Shell 是怎么找到命令的]({% post_url 2026-07-12-shell-how-find-commands %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-19. Shell 是怎么找到命令的
 20. alias 与 Shell 函数
 21. 文件搜索 — `find`、`locate`、`mdfind`
 22. 压缩与归档 — `tar`、`gzip`、`zip`
