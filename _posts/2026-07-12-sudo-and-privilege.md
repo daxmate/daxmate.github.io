@@ -141,24 +141,37 @@ sudo -u www-data whoami    # 输出 www-data
 
 ## 能执行什么：`/etc/sudoers`
 
-`sudo` 不是所有人都能用。谁能用、能执行哪些命令——配置在 `/etc/sudoers` 里。
+`sudo` 不是所有人都能用。谁能用、能执行哪些命令——配置在 `/etc/sudoers`（以及 `/etc/sudoers.d/` 下的文件）里。
+
+### 别改主文件，用 sudoers.d
+
+以前大家直接编辑 `/etc/sudoers`，但现在**推荐的做法是把自定义配置放在 `/etc/sudoers.d/` 目录下**，不动主文件。
+
+好处是系统更新时不会冲突，也方便管理。
 
 ```zsh
-sudo visudo
+sudo visudo -f /etc/sudoers.d/mysettings
 ```
 
-用 `visudo` 编辑，不要直接改文件。它会检查语法，防止你把自己锁在外面。
+`visudo -f` 创建新文件，同样会检查语法。例如：
 
-常见配置：
+```
+# 给自己免密执行 apt
+dax ALL=(ALL) NOPASSWD: /usr/bin/apt
+
+# 让你的用户不需要反复输密码
+%admin ALL=(ALL) ALL
+```
+
+### 常见配置
 
 ```
 # 管理员组——Linux 上通常用 wheel，macOS 上通常用 admin
 %wheel  ALL=(ALL:ALL) ALL
 %admin  ALL=(ALL:ALL) ALL
-
-# 指定某个命令不用输密码
-dax     ALL=(ALL) NOPASSWD: /usr/bin/apt
 ```
+
+解释一下这行：`%admin  ALL=(ALL:ALL) ALL` 意思是 admin 组的成员可以在任何主机上以任何用户身份执行任何命令。
 
 ---
 
