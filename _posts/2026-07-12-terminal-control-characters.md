@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "从零开始学命令行：终端的秘密——那些 Ctrl 键从哪里来"
+title:  "从零开始学命令行：那些Ctrl组合键从哪里来"
 date:   2026-07-12 15:30:00 +0800
 categories:
   - Command Line
