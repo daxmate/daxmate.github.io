@@ -214,6 +214,41 @@ echo $HOME    # /var/root
 exit          # 回到普通用户
 ```
 
+### 读懂 `sudo -l` 的输出
+
+第一次敲 `sudo -l`，输出可能有点懵。拿一个真实的例子来拆：
+
+```
+Matching Defaults entries for dax on ZMacbook:
+    env_reset,
+    env_keep+="LANG LC_CTYPE EDITOR VISUAL",
+    env_keep+="LINES COLUMNS",
+    env_keep+="HOME MAIL",
+    lecture_file=/etc/sudo_lecture
+
+User dax may run the following commands on ZMacbook:
+    (ALL) ALL
+    (ALL) NOPASSWD: /Library/TeX/texbin/tlmgr
+```
+
+**Defaults（默认行为配置）** 这部分说的是 `sudo` 的工作方式：
+
+| 配置 | 含义 |
+|------|------|
+| `env_reset` | `sudo` 在干净环境里启动，不继承当前用户的所有变量 |
+| `env_keep+="LANG LC_CTYPE"` | 但语言和编码设置留着 |
+| `env_keep+="EDITOR VISUAL"` | 编辑器设置也留着——`sudo` 后打开文件还是用你熟悉的编辑器 |
+| `lecture_file=...` | 第一次用 `sudo` 时显示的安全提示 |
+
+**Commands（你能干什么）** 这部分才是权限：
+
+| 条目 | 含义 |
+|------|------|
+| `(ALL) ALL` | 在任何机器上、以任何用户身份、执行任何命令——最高权限 |
+| `(ALL) NOPASSWD: /path/to/tlmgr` | 某个特定命令执行时不需要输密码（一般是安装特定软件时加的） |
+
+如果你的输出里第一行是 `(ALL) ALL`，那说明你有完整的 sudo 权限。
+
 ---
 
 ## 小结
