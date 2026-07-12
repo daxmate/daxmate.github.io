@@ -27,20 +27,29 @@ author_profile: false
 18. [环境变量]({% post_url 2026-07-12-environment-variables %})
 19. [Shell 是怎么找到命令的]({% post_url 2026-07-12-shell-how-find-commands %})
 20. [alias 与 Shell 函数——给命令起外号]({% post_url 2026-07-12-alias-and-functions %})
+21. [字符编码——为什么中文会乱码]({% post_url 2026-07-12-character-encoding %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-20. 文件搜索 — `find`、`locate`、`mdfind`
-21. 压缩与归档 — `tar`、`gzip`、`zip`
-22. grep 入门
-23. 扩展搜索 — `grep -E` 与正则进阶
-24. 文本处理 — `sort`、`uniq`、`cut`
-25. awk 入门
-26. sed 入门
-27. Unix 哲学
-28. 命令行选项的简史
-29. 写一个简单的脚本
-30. 进程管理 — `ps`、`top`、`kill`、后台运行
-31. 网络工具 — `curl`、`ping`、`ssh`
+21. 终端控制字符
+22. 文件搜索 — `find`、`locate`、`mdfind`
+23. 压缩与归档 — `tar`、`gzip`、`zip`
+24. grep 入门
+25. 扩展搜索 — `grep -E` 与正则进阶
+26. 正则表达式专篇
+27. 文本处理 — `sort`、`uniq`、`cut`
+28. sed 入门
+29. awk 入门
+30. 前后台任务
+31. 进程管理 — `ps`、`top`、`kill`、后台运行
+32. 系统监控
+33. sudo
+34. 定时任务
+35. 网络工具 — `curl`、`ping`、`ssh`
+36. SSH / 远程连接
+37. xxd — 二进制查看
+38. 写一个简单的脚本
+39. Unix 哲学
+40. 命令行选项的简史
