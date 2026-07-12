@@ -33,14 +33,14 @@ author_profile: false
 24. [文件搜索——`find`、`locate`、`mdfind`]({% post_url 2026-07-12-file-search %})
 25. [sort、uniq、cut、tr——文本处理四件套]({% post_url 2026-07-12-sort-uniq-cut-tr %})
 26. [前后台任务——让程序在背后跑]({% post_url 2026-07-12-job-control %})
+27. [sudo——借我一双管理员的手]({% post_url 2026-07-12-sudo-and-privilege %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-27. 进程管理 — `ps`、`top`、`kill`
-28. 系统监控
-29. sudo
+28. 进程管理 — `ps`、`top`、`kill`
+29. 系统监控
 30. 定时任务
 31. 网络工具 — `curl`、`ping`、`ssh`
 32. SSH / 远程连接

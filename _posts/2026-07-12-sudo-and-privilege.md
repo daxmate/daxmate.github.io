@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：sudo——借我一双管理员的手"
-date:   2026-07-09 13:00:00 +0800
+date:   2026-07-12 13:00:00 +0800
 categories:
   - Command Line
 tags:
@@ -33,6 +33,8 @@ sudo vim /etc/hosts             # 改系统配置文件
 ```
 
 敲完之后终端会让你输**你自己的密码**。注意不是 root 密码——`sudo` 验证的是你自己。
+
+输过一次之后，一段时间内（默认五分钟左右）再敲 `sudo` 不用重复输密码。
 
 ---
 
@@ -110,6 +112,33 @@ macOS 上默认没开 root 用户，所以 `su -` 没法直接切。用 `sudo -i
 
 ---
 
+## 实用技巧
+
+### 忘了加 sudo：`sudo !!`
+
+敲了一个命令发现权限不够，不想重新打一遍：
+
+```zsh
+systemctl restart nginx
+# Permission denied
+
+sudo !!
+```
+
+`!!` 展开成上一条命令，`sudo !!` 就变成 `sudo systemctl restart nginx`。
+
+### 以其他用户身份执行：`sudo -u`
+
+不一定非要是 root。你也可以假装成其他用户：
+
+```zsh
+sudo -u www-data whoami    # 输出 www-data
+```
+
+服务器上排查问题时经常用到这个特点。
+
+---
+
 ## 能执行什么：`/etc/sudoers`
 
 `sudo` 不是所有人都能用。谁能用、能执行哪些命令——配置在 `/etc/sudoers` 里。
@@ -120,17 +149,24 @@ sudo visudo
 
 用 `visudo` 编辑，不要直接改文件。它会检查语法，防止你把自己锁在外面。
 
-常见的配置：
+常见配置：
 
 ```
-# 用户 wheel 组的所有成员可以用 sudo
+# 管理员组——Linux 上通常用 wheel，macOS 上通常用 admin
 %wheel  ALL=(ALL:ALL) ALL
+%admin  ALL=(ALL:ALL) ALL
 
 # 指定某个命令不用输密码
 dax     ALL=(ALL) NOPASSWD: /usr/bin/apt
 ```
 
-macOS 上管理员（admin 组）默认可以用 sudo。
+---
+
+## 历史小注
+
+`sudo` 是 1980 年在纽约州立大学布法罗分校（SUNY Buffalo）诞生的，由 Bob Coggeshall 和 Cliff Spencer 编写。1994 年 Todd C. Miller 重写了整个代码，后来成为 OpenBSD 的标准组件，再后来被几乎所有 Unix 系操作系统采用。
+
+有趣的是，最初 `sudo` 的意思是 "superuser do"，但也有人开玩笑说它是 "sudo make me a sandwich"。
 
 ---
 
@@ -161,8 +197,10 @@ exit          # 回到普通用户
 | `sudo 命令` | 以 root 身份执行 |
 | `sudo -i` | 切换到 root Shell |
 | `sudo -l` | 查看自己能执行哪些命令 |
-| `command | sudo tee -a 文件` | 用 sudo 权限追加内容 |
-| `%sudo ALL=(ALL) ALL` | sudoers 里给用户组授权 |
+| `sudo !!` | 用 sudo 重跑上一条命令 |
+| `sudo -u 用户名` | 以指定用户身份执行 |
+| `command \| sudo tee -a 文件` | 用 sudo 权限追加内容 |
+| `visudo` | 安全编辑 sudoers 配置 |
 
 **核心规则：**
 1. 改系统的东西用 sudo，改自己的不用
