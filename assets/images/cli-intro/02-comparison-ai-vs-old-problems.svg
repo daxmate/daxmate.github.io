@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F9FA"/>
+      <stop offset="100%" stop-color="#EEF0F2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" font-size="20" font-weight="700" fill="#1A1A1A" letter-spacing="1">三个老门槛 × AI 解法</text>
+  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#6B7280">之前·之后 — AI 改变了哪三件事</text>
+
+  <!-- Column headers -->
+  <rect x="50" y="90" width="200" height="36" rx="6" fill="#F3F4F6"/>
+  <text x="150" y="114" text-anchor="middle" font-size="13" font-weight="600" fill="#6B7280">原来的问题</text>
+
+  <rect x="300" y="90" width="200" height="36" rx="6" fill="#F3F4F6"/>
+  <text x="400" y="114" text-anchor="middle" font-size="13" font-weight="600" fill="#6B7280">现在的方式</text>
+
+  <rect x="550" y="90" width="200" height="36" rx="6" fill="#ECFDF5"/>
+  <text x="650" y="114" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">变化</text>
+
+  <!-- Separator line -->
+  <line x1="275" y1="95" x2="275" y2="370" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="525" y1="95" x2="525" y2="370" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- Row 1: 记不住 -->
+  <rect x="55" y="145" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="142" y="167" text-anchor="middle" font-size="12" fill="#4B5563">十几个命令 × 几十个参数</text>
+  <text x="142" y="184" text-anchor="middle" font-size="11" fill="#9CA3AF">光文件操作就要记一堆</text>
+
+  <rect x="305" y="145" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="392" y="167" text-anchor="middle" font-size="12" fill="#4B5563">自然语言搜索</text>
+  <text x="392" y="184" text-anchor="middle" font-size="11" fill="#9CA3AF">直接问"怎么批量改名"</text>
+
+  <rect x="555" y="145" width="190" height="55" rx="6" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="650" y="164" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">不用背 ↓</text>
+  <text x="650" y="182" text-anchor="middle" font-size="11" fill="#6EE7B7">像跟懂行的同事聊天</text>
+
+  <!-- Row 2: 查得慢 -->
+  <rect x="55" y="215" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="142" y="237" text-anchor="middle" font-size="12" fill="#4B5563">翻手册、搜博客、等回复</text>
+  <text x="142" y="254" text-anchor="middle" font-size="11" fill="#9CA3AF">打开好几个标签页</text>
+
+  <rect x="305" y="215" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="392" y="237" text-anchor="middle" font-size="12" fill="#4B5563">即时解答</text>
+  <text x="392" y="254" text-anchor="middle" font-size="11" fill="#9CA3AF">同一界面里追问</text>
+
+  <rect x="555" y="215" width="190" height="55" rx="6" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="650" y="234" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">不用等 ↓</text>
+  <text x="650" y="252" text-anchor="middle" font-size="11" fill="#6EE7B7">对话式学习更高效</text>
+
+  <!-- Row 3: 报错看不懂 -->
+  <rect x="55" y="285" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="142" y="307" text-anchor="middle" font-size="12" fill="#4B5563">报错像外星语</text>
+  <text x="142" y="324" text-anchor="middle" font-size="11" fill="#9CA3AF">看不懂只能关终端</text>
+
+  <rect x="305" y="285" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="392" y="307" text-anchor="middle" font-size="12" fill="#4B5563">贴进去就好</text>
+  <text x="392" y="324" text-anchor="middle" font-size="11" fill="#9CA3AF">AI 解释 + 给修复命令</text>
+
+  <rect x="555" y="285" width="190" height="55" rx="6" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="650" y="304" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">不用怕 ↓</text>
+  <text x="650" y="322" text-anchor="middle" font-size="11" fill="#6EE7B7">不用发帖等回复</text>
+
+  <!-- Footer -->
+  <text x="400" y="395" text-anchor="middle" font-size="10" fill="#9CA3AF">但 AI 不是万能的 —— 会编造、不理解上下文、没有安全意识</text>
+</svg>

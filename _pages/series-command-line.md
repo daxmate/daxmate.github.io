@@ -7,7 +7,7 @@ author_profile: false
 
 这是一个系列教程，从零开始学习命令行的使用方法。按发布时间顺序阅读：
 
-1. [开工]({% post_url 2026-06-25-command-line-intro %})
+1. [为什么AI时代我们要学习命令行]({% post_url 2026-06-25-command-line-intro %})
 2. [终端与Shell]({% post_url 2026-06-26-terminal-and-shell %})
 3. [Shell 的前世今生]({% post_url 2026-06-26-shell-history %})
 4. [文件系统漫游]({% post_url 2026-06-27-file-system-roaming %})

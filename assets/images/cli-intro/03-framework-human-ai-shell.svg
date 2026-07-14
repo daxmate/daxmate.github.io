@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F9FA"/>
+      <stop offset="100%" stop-color="#EEF0F2"/>
+    </linearGradient>
+    <marker id="arrowDown" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#1A1A1A" letter-spacing="1">AI 时代的 CLI 交互模型</text>
+  <text x="400" y="65" text-anchor="middle" font-size="13" fill="#6B7280">发令人 · 翻译官 · 执行者</text>
+
+  <!-- Layer 1: Human -->
+  <rect x="200" y="100" width="400" height="70" rx="10" fill="#3B82F6" opacity="0.9"/>
+  <text x="400" y="132" text-anchor="middle" font-size="18" font-weight="700" fill="white">Human</text>
+  <text x="400" y="153" text-anchor="middle" font-size="12" fill="#DBEAFE">发令人 — 用自然语言描述想做的事</text>
+
+  <!-- Arrow 1 -->
+  <line x1="400" y1="170" x2="400" y2="205" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Layer 2: AI -->
+  <rect x="200" y="210" width="400" height="70" rx="10" fill="#8B5CF6" opacity="0.9"/>
+  <text x="400" y="242" text-anchor="middle" font-size="18" font-weight="700" fill="white">AI</text>
+  <text x="400" y="263" text-anchor="middle" font-size="12" fill="#EDE9FE">翻译官 — 理解意图，生成 Shell 命令</text>
+
+  <!-- Arrow 2 -->
+  <line x1="400" y1="280" x2="400" y2="315" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Layer 3: Shell -->
+  <rect x="200" y="320" width="400" height="70" rx="10" fill="#10B981" opacity="0.9"/>
+  <text x="400" y="352" text-anchor="middle" font-size="18" font-weight="700" fill="white">Shell</text>
+  <text x="400" y="373" text-anchor="middle" font-size="12" fill="#D1FAE5">执行者 — 运行命令，把结果返回给用户</text>
+
+  <!-- Side note: Feedback loop -->
+  <path d="M 620 355 Q 700 355 700 240 Q 700 135 620 135" fill="none" stroke="#D1D5DB" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="715" y="245" text-anchor="middle" font-size="11" fill="#9CA3AF" transform="rotate(90, 715, 245)">反馈循环</text>
+
+  <!-- Bottom caption -->
+  <text x="400" y="420" text-anchor="middle" font-size="10" fill="#9CA3AF">我们是对话的主导者，AI 是加速器，Shell 是执行者</text>
+</svg>

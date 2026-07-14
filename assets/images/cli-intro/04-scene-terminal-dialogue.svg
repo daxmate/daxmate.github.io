@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="SF Mono, Menlo, Monaco, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F9FA"/>
+      <stop offset="100%" stop-color="#EEF0F2"/>
+    </linearGradient>
+    <linearGradient id="terminalBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E1E2E"/>
+      <stop offset="100%" stop-color="#181825"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#1A1A1A" font-family="system-ui">终端：最直接的对话方式</text>
+
+  <!-- Terminal window -->
+  <rect x="100" y="70" width="600" height="300" rx="10" fill="url(#terminalBg)"/>
+
+  <!-- Title bar -->
+  <rect x="100" y="70" width="600" height="35" rx="10" fill="#313244"/>
+  <rect x="100" y="90" width="600" height="15" fill="#313244"/>
+  <!-- Traffic lights -->
+  <circle cx="125" cy="87" r="6" fill="#F38BA8"/>
+  <circle cx="145" cy="87" r="6" fill="#F9E2AF"/>
+  <circle cx="165" cy="87" r="6" fill="#A6E3A1"/>
+  <text x="400" y="92" text-anchor="middle" font-size="11" fill="#6C7086" font-family="system-ui">daxmate@terminal — 对话</text>
+
+  <!-- Terminal content area -->
+
+  <!-- Line 1: Prompt -->
+  <circle cx="125" cy="135" r="4" fill="#A6E3A1"/>
+  <text x="140" y="140" font-size="13" fill="#CDD6F4"># 我想批量重命名当前目录的 .jpg 文件，</text>
+
+  <!-- Line 2 -->
+  <text x="140" y="162" font-size="13" fill="#CDD6F4"># 把空格替换成下划线</text>
+
+  <!-- Line 3: AI response -->
+  <text x="140" y="190" font-size="13" fill="#89B4FA">→ 试试这条命令：</text>
+
+  <!-- Line 4: Generated command -->
+  <text x="140" y="215" font-size="13" fill="#F9E2AF">for f in *.jpg; do</text>
+  <text x="160" y="237" font-size="13" fill="#F9E2AF">  mv "$f" "${f// /_}"</text>
+  <text x="140" y="259" font-size="13" fill="#F9E2AF">done</text>
+
+  <!-- Line 5: AI explanation -->
+  <text x="140" y="285" font-size="13" fill="#A6E3A1"># 注解：遍历所有 .jpg 文件，</text>
+  <text x="140" y="307" font-size="13" fill="#A6E3A1"># 用 mv 把文件名中的空格替换为下划线</text>
+
+  <!-- Cursor blink -->
+  <rect x="140" y="320" width="2" height="14" fill="#CDD6F4">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Bottom caption -->
+  <text x="400" y="398" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="system-ui">你可以用自然语言向 AI 描述，AI 帮你翻译成 Shell 能理解的命令</text>
+</svg>
