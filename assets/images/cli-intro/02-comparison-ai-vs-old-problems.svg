@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" font-family="system-ui, -apple-system, sans-serif">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#F8F9FA"/>
@@ -7,11 +7,11 @@
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="420" fill="url(#bg)" rx="8"/>
+  <rect width="800" height="470" fill="url(#bg)" rx="8"/>
 
   <!-- Title -->
-  <text x="400" y="45" text-anchor="middle" font-size="20" font-weight="700" fill="#1A1A1A" letter-spacing="1">三个老门槛 × AI 解法</text>
-  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#6B7280">之前·之后 — AI 改变了哪三件事</text>
+  <text x="400" y="45" text-anchor="middle" font-size="20" font-weight="700" fill="#1A1A1A" letter-spacing="1">四个老门槛 × AI 解法</text>
+  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#6B7280">之前·之后 — AI 改变了什么</text>
 
   <!-- Column headers -->
   <rect x="50" y="90" width="200" height="36" rx="6" fill="#F3F4F6"/>
@@ -24,8 +24,8 @@
   <text x="650" y="114" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">变化</text>
 
   <!-- Separator line -->
-  <line x1="275" y1="95" x2="275" y2="370" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="525" y1="95" x2="525" y2="370" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="275" y1="95" x2="275" y2="410" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="525" y1="95" x2="525" y2="410" stroke="#E5E7EB" stroke-width="1"/>
 
   <!-- Row 1: 记不住 -->
   <rect x="55" y="145" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
@@ -66,6 +66,19 @@
   <text x="650" y="304" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">不用怕 ↓</text>
   <text x="650" y="322" text-anchor="middle" font-size="11" fill="#6EE7B7">不用发帖等回复</text>
 
+  <!-- Row 4: 语言关 -->
+  <rect x="55" y="355" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="142" y="377" text-anchor="middle" font-size="12" fill="#4B5563">全英文的手册和报错</text>
+  <text x="142" y="394" text-anchor="middle" font-size="11" fill="#9CA3AF">查一次翻译一回</text>
+
+  <rect x="305" y="355" width="175" height="55" rx="6" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="392" y="377" text-anchor="middle" font-size="12" fill="#4B5563">用中文问就行</text>
+  <text x="392" y="394" text-anchor="middle" font-size="11" fill="#9CA3AF">AI 用中文解释和回答</text>
+
+  <rect x="555" y="355" width="190" height="55" rx="6" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="650" y="374" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">不用翻 ↓</text>
+  <text x="650" y="392" text-anchor="middle" font-size="11" fill="#6EE7B7">英语不再是障碍</text>
+
   <!-- Footer -->
-  <text x="400" y="395" text-anchor="middle" font-size="10" fill="#9CA3AF">但 AI 不是万能的 —— 会编造、不理解上下文、没有安全意识</text>
+  <text x="400" y="445" text-anchor="middle" font-size="10" fill="#9CA3AF">但 AI 不是万能的 —— 会编造、不理解上下文、没有安全意识</text>
 </svg>
