@@ -36,14 +36,14 @@ author_profile: false
 27. [sudo——借我一双管理员的手]({% post_url 2026-07-12-sudo-and-privilege %})
 28. [进程管理——ps、top、kill 与信号]({% post_url 2026-07-12-process-management %})
 29. [命令行选项简史：从单字母到长单词]({% post_url 2026-07-14-command-line-options-history %})
+30. [网络工具——curl、ping、ssh 与更多]({% post_url 2026-07-14-network-tools %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-30. 系统监控
-31. 定时任务
-32. 网络工具 — `curl`、`ping`、`ssh`
+31. 系统监控
+32. 定时任务
 33. SSH / 远程连接
 34. xxd — 二进制查看
 35. 写一个简单的脚本
