@@ -67,7 +67,7 @@ ChatGPT 发布之后，我最大的一个感受是：命令行突然好学了。
 *从 1974 年的纸面手册，到 2008 年的网络论坛，再到 2022 年的 AI 助手*
 
 
-![三个老门槛 × AI 解法](/assets/images/cli-intro/02-comparison-ai-vs-old-problems.svg)
+![四个老门槛 × AI 解法](/assets/images/cli-intro/02-comparison-ai-vs-old-problems.svg)
 *四个困扰新手的老问题，AI 给出了直接的解法*
 
 ---
