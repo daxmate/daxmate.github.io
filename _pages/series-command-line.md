@@ -35,19 +35,19 @@ author_profile: false
 26. [前后台任务——让程序在背后跑]({% post_url 2026-07-12-job-control %})
 27. [sudo——借我一双管理员的手]({% post_url 2026-07-12-sudo-and-privilege %})
 28. [进程管理——ps、top、kill 与信号]({% post_url 2026-07-12-process-management %})
+29. [命令行选项简史：从单字母到长单词]({% post_url 2026-07-14-command-line-options-history %})
 
 ---
 
 > 以下文章已完成草稿，陆续发布中：
 
-29. 系统监控
-30. 定时任务
-31. 网络工具 — `curl`、`ping`、`ssh`
-32. SSH / 远程连接
-33. xxd — 二进制查看
-34. 写一个简单的脚本
-35. Unix 哲学
-36. 命令行选项的简史
+30. 系统监控
+31. 定时任务
+32. 网络工具 — `curl`、`ping`、`ssh`
+33. SSH / 远程连接
+34. xxd — 二进制查看
+35. 写一个简单的脚本
+36. Unix 哲学
 37. grep 入门
 38. 扩展搜索 — `grep -E` 与正则进阶
 39. 正则表达式专篇
