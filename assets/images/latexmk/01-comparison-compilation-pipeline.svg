@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" width="820" height="520">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect width="820" height="520" fill="#f8fafc" rx="8"/>
+
+  <text x="410" y="36" text-anchor="middle" font-size="18" font-weight="650" fill="#172033">LaTeX 编译路径的演变</text>
+
+  <!-- Left half -->
+  <rect x="20" y="52" width="380" height="450" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="30" y="78" font-size="14" font-weight="600" fill="#991b1b">传统编译路径</text>
+
+  <!-- Right half -->
+  <rect x="420" y="52" width="380" height="450" rx="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="430" y="78" font-size="14" font-weight="600" fill="#166534">现代直接编译</text>
+
+  <!-- VS divider -->
+  <line x1="410" y1="52" x2="410" y2="502" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 3"/>
+  <circle cx="410" cy="270" r="18" fill="#64748b"/>
+  <text x="410" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">VS</text>
+
+  <!-- ============ LEFT: TRADITIONAL ============ -->
+
+  <!-- .tex -->
+  <rect x="155" y="100" width="110" height="40" rx="6" fill="#bfdbfe" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="210" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#1e3a8a">.tex 源文件</text>
+
+  <line x1="210" y1="140" x2="210" y2="165" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- tex / latex -->
+  <rect x="155" y="170" width="110" height="40" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="210" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#78350f">tex / latex</text>
+
+  <line x1="210" y1="210" x2="210" y2="235" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- .dvi -->
+  <rect x="155" y="240" width="110" height="40" rx="6" fill="#bfdbfe" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="210" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#1e3a8a">.dvi 中间文件</text>
+
+  <!-- Branch labels -->
+  <text x="60" y="320" text-anchor="middle" font-size="12" font-weight="600" fill="#991b1b">模式 2</text>
+  <text x="360" y="320" text-anchor="middle" font-size="12" font-weight="600" fill="#991b1b">模式 3</text>
+
+  <!-- Branch arrows from .dvi -->
+  <line x1="210" y1="280" x2="210" y2="300" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="210" y1="300" x2="60" y2="330" stroke="#64748b" stroke-width="1.2"/>
+  <line x1="60" y1="330" x2="60" y2="345" stroke="#64748b" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <line x1="210" y1="300" x2="360" y2="330" stroke="#64748b" stroke-width="1.2"/>
+  <line x1="360" y1="330" x2="360" y2="345" stroke="#64748b" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- ===== Left branch: 模式 2 (dvips → .ps → ps2pdf) ===== -->
+
+  <!-- dvips -->
+  <rect x="10" y="350" width="100" height="36" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="60" y="373" text-anchor="middle" font-size="13" font-weight="600" fill="#78350f">dvips</text>
+
+  <line x1="60" y1="386" x2="60" y2="410" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- .ps -->
+  <rect x="10" y="415" width="100" height="36" rx="6" fill="#bfdbfe" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="60" y="438" text-anchor="middle" font-size="13" font-weight="600" fill="#1e3a8a">.ps 文件</text>
+
+  <line x1="60" y1="451" x2="60" y2="475" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ps2pdf -->
+  <rect x="10" y="480" width="100" height="36" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="60" y="503" text-anchor="middle" font-size="13" font-weight="600" fill="#78350f">ps2pdf</text>
+
+  <!-- ===== Right branch: 模式 3 (dvipdfmx) ===== -->
+
+  <!-- dvipdfmx -->
+  <rect x="310" y="350" width="100" height="36" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="360" y="373" text-anchor="middle" font-size="13" font-weight="600" fill="#78350f">dvipdfmx</text>
+
+  <line x1="360" y1="386" x2="360" y2="430" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- .pdf traditional (right branch) -->
+  <rect x="310" y="435" width="100" height="36" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" opacity="0.6"/>
+  <text x="360" y="458" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">.pdf</text>
+
+  <!-- .pdf traditional (from ps2pdf, left branch) -->
+  <rect x="10" y="530" width="100" height="36" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" opacity="0.6"/>
+  <text x="60" y="553" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">.pdf</text>
+
+  <!-- Note: 中间文件 -->
+  <rect x="130" y="300" width="160" height="22" rx="4" fill="#fecaca" opacity="0.7"/>
+  <text x="210" y="315" text-anchor="middle" font-size="11" fill="#991b1b">中间文件泛滥（.aux .toc .bbl...）</text>
+
+  <!-- ============ RIGHT: MODERN ============ -->
+
+  <!-- Three parallel columns -->
+
+  <!-- col 1: pdflatex -->
+  <rect x="445" y="140" width="100" height="40" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="495" y="165" text-anchor="middle" font-size="14" font-weight="600" fill="#1e3a8a">.tex 源文件</text>
+
+  <line x1="495" y1="180" x2="495" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="445" y="215" width="100" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="495" y="240" text-anchor="middle" font-size="14" font-weight="600" fill="#3730a3">pdflatex</text>
+
+  <line x1="495" y1="255" x2="495" y2="285" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="445" y="290" width="100" height="40" rx="6" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="495" y="315" text-anchor="middle" font-size="14" font-weight="600" fill="#115e59">.pdf</text>
+
+  <!-- col 2: lualatex -->
+  <rect x="565" y="140" width="100" height="40" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="615" y="165" text-anchor="middle" font-size="14" font-weight="600" fill="#1e3a8a">.tex 源文件</text>
+
+  <line x1="615" y1="180" x2="615" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="565" y="215" width="100" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="615" y="240" text-anchor="middle" font-size="14" font-weight="600" fill="#3730a3">lualatex</text>
+
+  <line x1="615" y1="255" x2="615" y2="285" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="565" y="290" width="100" height="40" rx="6" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="615" y="315" text-anchor="middle" font-size="14" font-weight="600" fill="#115e59">.pdf</text>
+
+  <!-- col 3: xelatex -->
+  <rect x="685" y="140" width="100" height="40" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="735" y="165" text-anchor="middle" font-size="14" font-weight="600" fill="#1e3a8a">.tex 源文件</text>
+
+  <line x1="735" y1="180" x2="735" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="685" y="215" width="100" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="735" y="240" text-anchor="middle" font-size="14" font-weight="600" fill="#3730a3">xelatex</text>
+
+  <line x1="735" y1="255" x2="735" y2="285" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <rect x="685" y="290" width="100" height="40" rx="6" fill="#99f6e4" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="735" y="315" text-anchor="middle" font-size="14" font-weight="600" fill="#115e59">.pdf</text>
+
+  <!-- Right side note -->
+  <rect x="455" y="365" width="310" height="36" rx="6" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="610" y="388" text-anchor="middle" font-size="13" fill="#166534">一条命令，直接出 PDF，无需中间步骤</text>
+
+  <!-- Footer -->
+  <rect x="55" y="490" width="200" height="22" rx="4" fill="#fecaca" opacity="0.5"/>
+  <text x="155" y="505" text-anchor="middle" font-size="11" fill="#991b1b">传统：3~4 步 + 手动编排</text>
+
+  <rect x="480" y="490" width="260" height="22" rx="4" fill="#bbf7d0" opacity="0.5"/>
+  <text x="610" y="505" text-anchor="middle" font-size="11" fill="#166534">现代：1 步，latexmk 自动完成全部</text>
+</svg>
