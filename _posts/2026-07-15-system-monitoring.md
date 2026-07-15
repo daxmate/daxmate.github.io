@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "从零开始学命令行：看系统状态——CPU、内存、磁盘、网络"
-date:   2026-07-15 16:00:00 +0800
+date:   2026-07-15 16:53:00 +0800
 categories:
   - Command Line
 tags:
