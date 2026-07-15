@@ -173,6 +173,49 @@ ssh dax@192.168.1.100 "ls -la /var/log"
 
 后来 OpenBSD 团队在 1999 年做了 **OpenSSH**，开源的、自由的实现，成了 Unix 和 macOS 的标配。今天 SSH 已经是互联网基础设施的一部分——没有它，我们可能还在用 Telnet 看明文密码。
 
+### 配置别名：`~/.ssh/config`
+
+每次都敲 `ssh dax@192.168.1.100 -p 2222` 很烦。在 `~/.ssh/config` 里配好：
+
+```
+Host myserver
+    HostName 192.168.1.100
+    User dax
+    Port 2222
+```
+
+然后直接：
+
+```zsh
+ssh myserver
+```
+
+登录名、端口、密钥文件、跳板机——所有连接信息写一次就好。
+
+### 传文件：`scp`
+
+SSH 不仅能远程登录，还能安全地传文件：
+
+```zsh
+# 本地传到服务器
+scp file.txt myserver:~/backup/
+
+# 服务器拉到本地
+scp myserver:~/backup/file.txt ./
+
+# 传整个目录
+scp -r myfolder myserver:~/
+```
+
+`scp` 的用法跟 `cp` 很像，只是路径可以带 `主机名:` 前缀。
+
+### 安全备忘
+
+- **私钥不要外传**——谁拿到 `id_ed25519` 就能登录所有配了公钥的机器
+- **给私钥加密码**——`ssh-keygen` 时输入的 passphrase，私钥丢了别人也打不开
+- **不用 root 直接 SSH**——用普通用户登录 + `sudo`
+- **关掉密码登录**——配好密钥后，在服务器上设 `PasswordAuthentication no`
+
 ---
 
 ## 查看网络信息：`ifconfig`
@@ -230,7 +273,7 @@ lsof -i :8080 | grep LISTEN
 
 ### 小故事
 
-`lsof` 是普渡大学的 **Victor Abell** 从 1994 年开始开发维护的——一个人做了二十多年，一直到 2019 年才把维护权交给 GitHub 社区。"lsof" 就是 "LiSt Open Files" 的缩写，不只是看端口——它还能看进程打开了哪些普通文件、目录、管道、库文件，甚至是被删除但还被进程占着的文件。
+`lsof` 是普渡大学的 **Victor Abell** 从 1991 年开始开发维护的——一个人做了近三十年，一直到 2019 年才把维护权交给 GitHub 社区。"lsof" 就是 "LiSt Open Files" 的缩写，不只是看端口——它还能看进程打开了哪些普通文件、目录、管道、库文件，甚至是被删除但还被进程占着的文件。
 
 （Linux 上 `lsof` 也通用。不过如果你装的是新 Linux，也可以用 `ss -tlnp` 看端口监听情况——那是现代方式。）
 
@@ -260,6 +303,42 @@ Connection to example.com port 80 [tcp/http] succeeded!
 
 ---
 
+## 查域名：`dig`
+
+`ping` 通了，浏览器还是打不开网站？可能是 DNS 出了问题——域名转不成 IP。
+
+`dig` 是查 DNS 记录的工具：
+
+```zsh
+dig example.com
+```
+
+输出会包含域名对应的 IP、查询了哪个 DNS 服务器、花了多长时间。只看 IP 的话：
+
+```zsh
+dig example.com +short
+```
+
+```
+93.184.216.34
+```
+
+指定 DNS 服务器查询：
+
+```zsh
+dig @8.8.8.8 example.com
+```
+
+`@8.8.8.8` 是用 Google 的公共 DNS 查——有时候本地 DNS 缓存了错误的结果，换个服务器能看出问题出在哪一步。
+
+### 小故事
+
+`dig` 是 BIND（Berkeley Internet Name Domain）工具集的一部分。BIND 是 80 年代加州大学伯克利分校开发的 DNS 服务器软件。现在互联网上绝大多数的 DNS 服务器跑的都是 BIND 或其衍生版本，`dig` 就这么跟着成了跑不掉的标配工具。
+
+——"Domain Information Groper"，意思是翻 DNS 信息的。能用 `dig` 查域名，也能用它做更深入的 DNS 调试——指定记录类型（A、MX、TXT 等）、追递归查询链路——不过这篇里知道最基本的用法就够了。
+
+---
+
 ## 动手试试
 
 ```zsh
@@ -271,6 +350,9 @@ curl -I https://example.com
 
 # ping 一下
 ping -c 3 baidu.com
+
+# 查一个域名的 IP
+dig example.com +short
 
 # 看你自己的 IP
 ifconfig en0 | grep "inet "
@@ -288,9 +370,11 @@ lsof -i :22
 |------|------|----------|
 | `curl` | 下载文件、发 HTTP 请求 | `-o` 保存，`-I` 响应头，`-L` 跟随重定向，`-s` 静默 |
 | `ping` | 测网络连通性 | `-c 次数` 限制发包 |
-| `ssh` | 远程登录 | 配 SSH Key 免密，后面直接跟命令单次执行 |
+| `ssh` | 远程登录 | 配 SSH Key 免密、`~/.ssh/config` 别名 |
 | `ssh-copy-id` | 把公钥放远程机器 | 配一次，以后免密登录 |
+| `scp` | 通过 SSH 传文件 | 路径加 `主机名:` 前缀，`-r` 传目录 |
 | `ifconfig` | 查看网络接口 | Linux 上考虑用 `ip addr` |
+| `dig` | DNS 查询 | `+short` 只看 IP，`@服务器` 指定 DNS |
 | `lsof -i :端口` | 看端口被谁占用 | `grep LISTEN` 只看监听状态 |
 | `nc -zv` | 检测端口连通 | `nc -zv host port` |
 
