@@ -133,13 +133,25 @@ echo *.nonexistent
 
 ## 扩展通配符
 
-除了基础的几个，zsh 还提供了一组扩展模式匹配。先列一下，后面用到的时候再展开：
+除了基础的几个，zsh 还提供了一组扩展模式匹配。先列一下，后面会用上：
 
 | 语法 | 作用 | 示例 |
 |------|------|------|
 | `**/*.txt` | 递归匹配所有子目录 | 当前目录及所有子目录中的 .txt 文件 |
 | `^pattern` | 排除匹配 | `ls ^*.txt` 显示非 .txt 文件 |
 | `pattern~pattern` | 排除特定模式 | `ls *.txt~readme*` 显示除了 readme 开头的 txt |
+
+> ⚠️ `^pattern` 和 `pattern~pattern` 需要开启 `extendedglob` 选项才能用。zsh 默认不开启，所以直接敲 `ls ^*.txt` 会原样输出而不是报错。开启方式：
+> 
+> ```zsh
+> setopt extendedglob
+> ```
+> 
+> 想永久开启就写进 `~/.zshrc`：
+> 
+> ```zsh
+> echo 'setopt extendedglob' >> ~/.zshrc
+> ```
 
 关于 `**` 多说一句：在 zsh 里它默认就能用。在 bash 里情况不一样——bash 4+ 才有 `globstar` 选项且默认关闭，需要 `shopt -s globstar`；macOS 自带的 bash 3.2 甚至没有这个选项，`**` 的行为跟 `*` 一样，不能递归。
 
@@ -162,7 +174,11 @@ ls **/*.log
 
 ### 场景 2：只保留某些文件
 
+需要先开启 `extendedglob`（如果还没开的话），`^` 排除匹配才能用：
+
 ```zsh
+setopt extendedglob
+
 # 把除了 .md 以外的文件移到另一个目录
 mv ^*.md ~/temp/
 ```
